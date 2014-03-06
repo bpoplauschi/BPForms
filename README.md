@@ -1,4 +1,109 @@
 BPForms
 =======
 
-Dynamic forms for iOS
+Dynamic forms for iPhone/iPad - iOS 6, 7 and later.
+
+<p align="left" >
+  <img src="BPForms.gif" title="BPForms demo" float=left>
+</p>
+
+## How to get started
+
+### install via CocoaPods
+```ruby
+platform :ios, '6.1'
+pod 'BPForms'
+```
+
+## Requirements
+
+- Xcode4 and above
+- iOS 6.0 or above
+
+## Architecture
+
+#### Form
+- BPFormViewController
+
+#### Cells
+- BPFormCell
+  - BPFormInputCell (uses BPFormTextField)
+  - BPFormButtonCell
+  - BPFormInfoCell
+
+#### Appearance
+- BPAppearance
+
+
+## Demo
+
+Go to /Example, run ```pod install```, and run the target from BPFormsExample.xcworkspace
+
+## Usage
+
+For any form you create, you should subclass ```BPFormViewController``` or just instantiate it.
+
+#### Create an input cell
+
+Just set the properties you need and make sure you set the ```BPFormViewController``` instance as delegate for the ```textField```.
+```shouldChangeBlock``` is used to verify the data entered, so please add the verification code (see example).
+
+```objectivec
+BPFormInputCell *emailCell = [[BPFormInputCell alloc] init];
+emailCell.textField.placeholder = @"Email";
+emailCell.textField.delegate = self;
+emailCell.customCellHeight = 50.0f;
+emailCell.mandatory = YES;
+emailCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
+    static NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegEx
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    
+    if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
+        inCell.validationState = BPFormValidationStateValid;
+        inCell.shouldShowInfoCell = NO;
+    } else {
+        inCell.validationState = BPFormValidationStateInvalid;
+        inCell.infoCell.label.text = @"The email should look like name@provider.domain";
+        inCell.shouldShowInfoCell = YES;
+    }
+    return YES;
+};
+```
+
+#### Create a button cell
+
+```objectivec
+BPFormButtonCell *signUpCell = [[BPFormButtonCell alloc] init];
+signUpCell.button.backgroundColor = [UIColor blueColor];
+[signUpCell.button setTitle:@"Sign Up" forState:UIControlStateNormal];
+signUpCell.button.layer.cornerRadius = 4.0;
+signUpCell.button.layer.masksToBounds = YES;
+signUpCell.buttonActionBlock = ^(void){
+    NSLog(@"Button pressed");
+};
+```
+
+#### Add all the cells to the form controller
+
+- keep in mind ```formCells``` contains an array of sections, each sections with its cells
+
+```objectivec
+self.formCells = @[@[emailCell, passwordCell, password2Cell, nameCell, phoneCell], @[signUpCell]];
+```
+
+#### Add section header or footer
+
+```objectivec
+[self setHeaderTitle:@"Please enter your credentials" forSection:0];
+[self setFooterTitle:@"When you're done, press <<Sign Up>>" forSection:0];
+```
+
+## Author
+- [Bogdan Poplauschi](https://github.com/bpoplauschi)
+
+## License
+- BPForms is available under the [MIT license](LICENSE).
