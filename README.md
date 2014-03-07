@@ -4,7 +4,8 @@ BPForms
 Dynamic forms for iPhone/iPad - iOS 6, 7 and later (ispired from [BZGFormViewController](https://github.com/benzguo/BZGFormViewController)).
 
 <p align="left" >
-  <img src="BPForms.gif" title="BPForms demo" float=left>
+  <img src="BPForms.jpeg" title="BPForms demo image" float=left width=300 hspace=40>
+  <img src="BPForms.gif" title="BPForms demo" float=right width=300>
 </p>
 
 ## How to get started
