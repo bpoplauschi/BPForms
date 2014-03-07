@@ -49,6 +49,8 @@
     [self.button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.button];
     
+    self.button.frame = CGRectMake(round((self.frame.size.width - self.frame.origin.x - [BPAppearance sharedInstance].elementWidth) / 2), self.frame.origin.y, [BPAppearance sharedInstance].elementWidth, [BPAppearance sharedInstance].elementHeight);
+    
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@([BPAppearance sharedInstance].elementWidth));
         make.centerX.equalTo(self.mas_centerX);
