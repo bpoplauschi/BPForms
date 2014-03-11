@@ -30,6 +30,8 @@
 typedef void (^TextFieldEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
 typedef BOOL (^TextFieldShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
 
+TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
+
 
 typedef NS_ENUM(NSInteger, BPFormValidationState) {
     BPFormValidationStateInvalid = -1,
