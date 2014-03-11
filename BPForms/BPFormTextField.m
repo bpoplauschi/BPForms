@@ -39,6 +39,7 @@
     CGRect frame = inBounds;
     // add a 5 pixel origin.x offset so that the text doesn't start right from the margin
     frame.origin.x = 5;
+    frame.size.width -=5;
     // also, on iOS6 and earlier, the text starts right from the top, so add a similar 12 pixel vertical offset
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
         frame.origin.y = 12;
