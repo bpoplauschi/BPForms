@@ -36,6 +36,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.title = @"Sign Up";
+    
     BPFormInputCell *emailCell = [[BPFormInputCell alloc] init];
     emailCell.textField.placeholder = @"Email";
     emailCell.textField.delegate = self;
@@ -106,6 +108,8 @@
     
     [self setHeaderTitle:@"Please enter your credentials" forSection:0];
     [self setFooterTitle:@"When you're done, press <<Sign Up>>" forSection:0];
+    
+    self.customSectionHeaderHeight = 30;
 }
 
 @end
