@@ -32,6 +32,27 @@ static NSString *BPMandatoryImageName = nil;
 static NSString *BPValidImageName = nil;
 static NSString *BPInvalidImageName = nil;
 
+TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message) {
+    return ^BOOL(BPFormInputCell *inCell, NSString *inText) {
+        NSString *emailRegEx = pattern;
+        
+        NSError *error = nil;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegEx
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        
+        if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
+            inCell.validationState = BPFormValidationStateValid;
+            inCell.shouldShowInfoCell = NO;
+        } else {
+            inCell.validationState = BPFormValidationStateInvalid;
+            inCell.infoCell.label.text = message;
+            inCell.shouldShowInfoCell = YES;
+        }
+        return YES;
+    };
+}
+
 @implementation BPFormInputCell
 
 +(void)setMandatoryImageName:(NSString *)inMandatoryImageName {

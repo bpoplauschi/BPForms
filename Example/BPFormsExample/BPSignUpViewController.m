@@ -41,24 +41,10 @@
     emailCell.textField.delegate = self;
     emailCell.customCellHeight = 50.0f;
     emailCell.mandatory = YES;
-    emailCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
-        static NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-        
-        NSError *error = nil;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegEx
-                                                                               options:NSRegularExpressionCaseInsensitive
-                                                                                 error:&error];
-        
-        if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
-            inCell.validationState = BPFormValidationStateValid;
-            inCell.shouldShowInfoCell = NO;
-        } else {
-            inCell.validationState = BPFormValidationStateInvalid;
-            inCell.infoCell.label.text = @"The email should look like name@provider.domain";
-            inCell.shouldShowInfoCell = YES;
-        }
-        return YES;
-    };
+    emailCell.shouldChangeTextBlock =
+        BPTextFieldValidateBlockWithPatternAndMessage(
+            @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
+            @"The email should look like name@provider.domain");
     
     BPFormInputCell *passwordCell = [[BPFormInputCell alloc] init];
     passwordCell.textField.placeholder = @"Password";
