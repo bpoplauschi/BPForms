@@ -97,6 +97,21 @@ self.formCells = @[@[emailCell, passwordCell, password2Cell, nameCell, phoneCell
 [self setFooterTitle:@"When you're done, press <<Sign Up>>" forSection:0];
 ```
 
+#### Tweak appearance
+
+- use the BPAppearance class to customize the way the forms look
+
+```objectivec
+// fonts
+[BPAppearance sharedInstance].infoCellLabelFont = [UIFont systemFontOfSize:12];
+
+// colors
+[BPAppearance sharedInstance].headerFooterLabelTextColor = [UIColor lightGray];
+
+// sizes
+[BPAppearance sharedInstance].infoCellHeight = 25;
+```
+
 ## Author
 - [Bogdan Poplauschi](https://github.com/bpoplauschi)
 
