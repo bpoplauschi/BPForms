@@ -1,7 +1,7 @@
 BPForms
 =======
 
-Dynamic forms for iPhone/iPad - iOS 6, 7 and later (ispired from [BZGFormViewController](https://github.com/benzguo/BZGFormViewController)).
+Dynamic forms for iPhone/iPad - iOS 6, 7 and later (inspired from [BZGFormViewController](https://github.com/benzguo/BZGFormViewController)).
 
 Now integrated with the well known [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField).
 
