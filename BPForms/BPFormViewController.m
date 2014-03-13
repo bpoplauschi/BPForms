@@ -213,10 +213,7 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    BPFormInputCell *cell = nil;
-    if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [textField containerInputCell];
-    }
+    BPFormInputCell *cell = [textField containerInputCell];
     if (!cell) {
         return;
     }
@@ -231,10 +228,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     BOOL shouldChange = YES;
-    BPFormInputCell *cell = nil;
-    if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [textField containerInputCell];
-    }
+    BPFormInputCell *cell = [textField containerInputCell];
+
     if (!cell) {
         return YES;
     }
@@ -250,10 +245,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    BPFormInputCell *cell = nil;
-    if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [textField containerInputCell];
-    }
+    BPFormInputCell *cell = [textField containerInputCell];
     if (!cell) {
         return;
     }
@@ -270,13 +262,9 @@
     [self updateInfoCellBelowInputCell:cell];
     [cell updateAccordingToValidationState];
 }
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     BOOL shouldReturn = YES;
-    BPFormInputCell *cell = nil;
-    if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [textField containerInputCell];
-    }
+    BPFormInputCell *cell = [textField containerInputCell];
     if (!cell) {
         return YES;
     }
