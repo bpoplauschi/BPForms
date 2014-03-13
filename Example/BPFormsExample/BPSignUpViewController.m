@@ -49,7 +49,7 @@
             @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
             @"The email should look like name@provider.domain");
     
-    BPFormInputCell *passwordCell = [[BPFormInputCell alloc] init];
+    BPFormFloatLabelInputCell *passwordCell = [[BPFormFloatLabelInputCell alloc] init];
     passwordCell.textField.placeholder = @"Password";
     passwordCell.textField.delegate = self;
     passwordCell.textField.secureTextEntry = YES;
@@ -67,7 +67,7 @@
         return YES;
     };
 
-    BPFormInputCell *password2Cell = [[BPFormInputCell alloc] init];
+    BPFormFloatLabelInputCell *password2Cell = [[BPFormFloatLabelInputCell alloc] init];
     password2Cell.textField.placeholder = @"Verify Password";
     password2Cell.textField.delegate = self;
     password2Cell.textField.secureTextEntry = YES;
@@ -85,12 +85,12 @@
         return YES;
     };
     
-    BPFormInputCell *nameCell = [[BPFormInputCell alloc] init];
+    BPFormFloatLabelInputCell *nameCell = [[BPFormFloatLabelInputCell alloc] init];
     nameCell.textField.placeholder = @"Name";
     nameCell.textField.delegate = self;
     nameCell.customCellHeight = 50.0f;
     
-    BPFormInputCell *phoneCell = [[BPFormInputCell alloc] init];
+    BPFormFloatLabelInputCell *phoneCell = [[BPFormFloatLabelInputCell alloc] init];
     phoneCell.textField.placeholder = @"Phone";
     phoneCell.textField.delegate = self;
     phoneCell.textField.keyboardType = UIKeyboardTypePhonePad;
