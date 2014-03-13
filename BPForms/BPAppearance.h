@@ -47,10 +47,11 @@
 
 
 // -- Fonts --
-@property (nonatomic, strong) UIFont *inputCellTextFieldFont;               // default is system-12
-@property (nonatomic, strong) UIFont *infoCellLabelFont;                    // default is system-10
+@property (nonatomic, strong) UIFont *inputCellTextFieldFont;               // default is system-14
 
-@property (nonatomic, strong) UIFont *headerFooterLabelFont;                // default is system-10
+@property (nonatomic, strong) UIFont *infoCellLabelFont;                    // default is system-12
+
+@property (nonatomic, strong) UIFont *headerFooterLabelFont;                // default is system-12
 
 
 // -- Sizes --

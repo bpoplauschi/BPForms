@@ -59,9 +59,9 @@
     
     self.headerFooterLabelTextColor         = [UIColor darkGrayColor];
     
-    self.inputCellTextFieldFont = [UIFont systemFontOfSize:12.0f];
-    self.infoCellLabelFont      = [UIFont systemFontOfSize:10.0f];
-    self.headerFooterLabelFont  = [UIFont systemFontOfSize:10.0f];
+    self.inputCellTextFieldFont             = [UIFont systemFontOfSize:14.0f];
+    self.infoCellLabelFont                  = [UIFont systemFontOfSize:12.0f];
+    self.headerFooterLabelFont              = [UIFont systemFontOfSize:12.0f];
     
     self.elementWidth   = 290;
     self.elementHeight  = 44;
