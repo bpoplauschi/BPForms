@@ -22,18 +22,9 @@
 //  SOFTWARE.
 
 
-@class BPFormInputCell;
-
 /**
  *  Subclass UITextField to adjust the layout (i.e. start text with a little offset)
  */
 @interface BPFormTextField : UITextField
-
-/**
- *  Retrieve the input cell containing the current text field
- *
- *  @return the instance of the BPFormInputCell or nil
- */
-- (BPFormInputCell *)containerTableViewCell;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BPFormTextField.m
+//  UITextField+BPForms.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,22 +21,34 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-#import "BPFormTextField.h"
-#import "BPFormInputCell.h"
 #import "UITextField+BPForms.h"
+#import "BPFormInputCell.h"
 
-@implementation BPFormTextField
 
-/**
- *  The following methods add an x offset to the textfield text
- */
-- (CGRect)textRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
+@implementation UITextField (BPForms)
+
+- (BPFormInputCell *)containerInputCell {
+    UIView *view = self;
+    while ((view = view.superview)) {
+        if ([view isKindOfClass:[BPFormCell class]]) {
+            break;
+        }
+    }
+    return (BPFormInputCell *)view;
 }
 
-- (CGRect)editingRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
+- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds {
+    CGRect frame = inBounds;
+    frame.origin.x = xOffset;
+    frame.size.width -= xOffset;
+    
+    // also, on iOS6 and earlier, the text starts right from the top, so add a similar 12 pixel vertical offset
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+        frame.origin.y += 12;
+    }
+    
+    inBounds = frame;
+    return CGRectInset(inBounds, 0, 0);
 }
 
 @end

@@ -34,6 +34,9 @@
 		DA192D6418C779130025FFB4 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D6318C779130025FFB4 /* checkmark.png */; };
 		DA192D6618C779170025FFB4 /* exclamationMark.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D6518C779170025FFB4 /* exclamationMark.png */; };
 		DAA1ED3118C8770800FAAE03 /* BPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1ED3018C8770800FAAE03 /* BPAppearance.m */; };
+		DAFE2F3A18D1C9E000F3B98D /* UITextField+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */; };
+		DAFE2F4718D1D91A00F3B98D /* BPFormFloatLabelInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */; };
+		DAFE2F4818D1D91A00F3B98D /* BPFormFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,12 @@
 		DA192D6518C779170025FFB4 /* exclamationMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamationMark.png; sourceTree = "<group>"; };
 		DAA1ED2F18C8770800FAAE03 /* BPAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAppearance.h; sourceTree = "<group>"; };
 		DAA1ED3018C8770800FAAE03 /* BPAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAppearance.m; sourceTree = "<group>"; };
+		DAFE2F3818D1C9E000F3B98D /* UITextField+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BPForms.h"; sourceTree = "<group>"; };
+		DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BPForms.m"; sourceTree = "<group>"; };
+		DAFE2F4318D1D91A00F3B98D /* BPFormFloatLabelInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatLabelInputCell.h; sourceTree = "<group>"; };
+		DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatLabelInputCell.m; sourceTree = "<group>"; };
+		DAFE2F4518D1D91A00F3B98D /* BPFormFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatLabelTextField.h; sourceTree = "<group>"; };
+		DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatLabelTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				DA192D3E18C753370025FFB4 /* BPForms */,
+				DAFE2F4218D1D91A00F3B98D /* BPFormsFloatLabel */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -201,13 +211,15 @@
 		DA192D3E18C753370025FFB4 /* BPForms */ = {
 			isa = PBXGroup;
 			children = (
+				DA192D4418C753370025FFB4 /* Cells */,
 				DAA1ED2F18C8770800FAAE03 /* BPAppearance.h */,
 				DAA1ED3018C8770800FAAE03 /* BPAppearance.m */,
 				DA192D4018C753370025FFB4 /* BPFormTextField.h */,
 				DA192D4118C753370025FFB4 /* BPFormTextField.m */,
 				DA192D4218C753370025FFB4 /* BPFormViewController.h */,
 				DA192D4318C753370025FFB4 /* BPFormViewController.m */,
-				DA192D4418C753370025FFB4 /* Cells */,
+				DAFE2F3818D1C9E000F3B98D /* UITextField+BPForms.h */,
+				DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */,
 			);
 			name = BPForms;
 			path = ../BPForms;
@@ -239,6 +251,18 @@
 				DA192D5C18C7746C0025FFB4 /* exclamationMark@2x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DAFE2F4218D1D91A00F3B98D /* BPFormsFloatLabel */ = {
+			isa = PBXGroup;
+			children = (
+				DAFE2F4318D1D91A00F3B98D /* BPFormFloatLabelInputCell.h */,
+				DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */,
+				DAFE2F4518D1D91A00F3B98D /* BPFormFloatLabelTextField.h */,
+				DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */,
+			);
+			name = BPFormsFloatLabel;
+			path = ../BPFormsFloatLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,12 +406,15 @@
 				DA192D5018C753370025FFB4 /* BPFormCell.m in Sources */,
 				DAA1ED3118C8770800FAAE03 /* BPAppearance.m in Sources */,
 				DA192D5518C758BB0025FFB4 /* BPSignUpViewController.m in Sources */,
+				DAFE2F3A18D1C9E000F3B98D /* UITextField+BPForms.m in Sources */,
+				DAFE2F4818D1D91A00F3B98D /* BPFormFloatLabelTextField.m in Sources */,
 				DA192D4F18C753370025FFB4 /* BPFormButtonCell.m in Sources */,
 				DA192D1618C752BE0025FFB4 /* BPAppDelegate.m in Sources */,
 				DA192D5218C753370025FFB4 /* BPFormInputCell.m in Sources */,
 				DA192D1218C752BD0025FFB4 /* main.m in Sources */,
 				DA192D5118C753370025FFB4 /* BPFormInfoCell.m in Sources */,
 				DA192D4E18C753370025FFB4 /* BPFormViewController.m in Sources */,
+				DAFE2F4718D1D91A00F3B98D /* BPFormFloatLabelInputCell.m in Sources */,
 				DA192D4D18C753370025FFB4 /* BPFormTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

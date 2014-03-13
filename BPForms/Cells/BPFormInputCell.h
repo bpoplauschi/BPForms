@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
 @interface BPFormInputCell : BPFormCell
 
 // UI components
-@property (nonatomic, strong) BPFormTextField   *textField;
+@property (nonatomic, strong) UITextField       *textField;
 @property (nonatomic, strong) UIImageView       *mandatoryImageView;
 @property (nonatomic, strong) UIImageView       *validationImageView;
 
@@ -58,6 +58,11 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
 @property (nonatomic, copy) TextFieldShouldEditBlock shouldReturnBlock;     // Block called from `textFieldShouldReturn:`. Return YES if the text should change
 
 /**
+ *  By default BPFormInputCell uses the BPFormTextField class for text fields. This can be customized by providing a different class
+ */
++ (Class)textFieldClass;
+
+/**
  *  Will update the UI according to the validation state
  */
 - (void)updateAccordingToValidationState;
@@ -67,7 +72,7 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
  *
  *  @param inMandatoryImageName - the image name must point to a file in the main bundle
  */
-+(void)setMandatoryImageName:(NSString *)inMandatoryImageName;
++ (void)setMandatoryImageName:(NSString *)inMandatoryImageName;
 
 /**
  *  Use to set custom images as valid and invalid icons
@@ -75,6 +80,6 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
  *  @param inValidImageName   - the image name must point to a file in the main bundle
  *  @param inInvalidImageName - the image name must point to a file in the main bundle
  */
-+(void)setValidImageName:(NSString *)inValidImageName invalidImageName:(NSString *)inInvalidImageName;
++ (void)setValidImageName:(NSString *)inValidImageName invalidImageName:(NSString *)inInvalidImageName;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BPFormTextField.m
+//  BPFormFloatLabelTextField.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,22 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-#import "BPFormTextField.h"
-#import "BPFormInputCell.h"
-#import "UITextField+BPForms.h"
-
-@implementation BPFormTextField
+#import "JVFloatLabeledTextField.h"
 
 /**
- *  The following methods add an x offset to the textfield text
+ *  Had to subclass JVFloatLabeledTextField to be able to add our x offset
  */
-- (CGRect)textRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
-}
-
-- (CGRect)editingRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
-}
+@interface BPFormFloatLabelTextField : JVFloatLabeledTextField
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BPFormTextField.m
+//  UITextField+BPForms.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -22,21 +22,29 @@
 //  SOFTWARE.
 
 
-#import "BPFormTextField.h"
-#import "BPFormInputCell.h"
-#import "UITextField+BPForms.h"
-
-@implementation BPFormTextField
+@class BPFormInputCell;
 
 /**
- *  The following methods add an x offset to the textfield text
+ *  The purpose is to add common functionality to all our textfields
  */
-- (CGRect)textRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
-}
+@interface UITextField (BPForms)
 
-- (CGRect)editingRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
-}
+/**
+ *  Retrieve the input cell containing the current text field
+ *
+ *  @return the instance of the BPFormInputCell or nil
+ */
+- (BPFormInputCell *)containerInputCell;
+
+/**
+ *  Adds an X offset to bounds. Used by `textRectForBounds` and `editingRectForBounds` methods.
+ *  The purpose is to avoid text values starting right from the edge.
+ *
+ *  @param xOffset  x offset in pixels
+ *  @param inBounds the input bounds
+ *
+ *  @return the output bounds
+ */
+- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds;
 
 @end

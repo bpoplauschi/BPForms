@@ -60,6 +60,7 @@
     self.headerFooterLabelTextColor         = [UIColor darkGrayColor];
     
     self.inputCellTextFieldFont             = [UIFont systemFontOfSize:14.0f];
+    self.inputCellTextFieldFloatingLabelFont= [UIFont systemFontOfSize: 8.0f];
     self.infoCellLabelFont                  = [UIFont systemFontOfSize:12.0f];
     self.headerFooterLabelFont              = [UIFont systemFontOfSize:12.0f];
     

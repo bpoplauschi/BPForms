@@ -48,6 +48,7 @@
 
 // -- Fonts --
 @property (nonatomic, strong) UIFont *inputCellTextFieldFont;               // default is system-14
+@property (nonatomic, strong) UIFont *inputCellTextFieldFloatingLabelFont;  // default is system-8
 
 @property (nonatomic, strong) UIFont *infoCellLabelFont;                    // default is system-12
 

@@ -29,6 +29,7 @@
 #import "BPFormTextField.h"
 #import "BPFormInfoCell.h"
 #import <Masonry.h>
+#import "UITextField+BPForms.h"
 
 
 @interface BPFormViewController ()
@@ -214,7 +215,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     BPFormInputCell *cell = nil;
     if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [((BPFormTextField *)textField) containerTableViewCell];
+        cell = [textField containerInputCell];
     }
     if (!cell) {
         return;
@@ -232,7 +233,7 @@
     BOOL shouldChange = YES;
     BPFormInputCell *cell = nil;
     if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [((BPFormTextField *)textField) containerTableViewCell];
+        cell = [textField containerInputCell];
     }
     if (!cell) {
         return YES;
@@ -251,7 +252,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     BPFormInputCell *cell = nil;
     if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [((BPFormTextField *)textField) containerTableViewCell];
+        cell = [textField containerInputCell];
     }
     if (!cell) {
         return;
@@ -274,7 +275,7 @@
     BOOL shouldReturn = YES;
     BPFormInputCell *cell = nil;
     if ([textField isKindOfClass:[BPFormTextField class]]) {
-        cell = [((BPFormTextField *)textField) containerTableViewCell];
+        cell = [textField containerInputCell];
     }
     if (!cell) {
         return YES;

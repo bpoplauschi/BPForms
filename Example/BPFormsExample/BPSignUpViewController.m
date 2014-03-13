@@ -25,6 +25,7 @@
 #import "BPFormInputCell.h"
 #import "BPFormButtonCell.h"
 #import "BPFormInfoCell.h"
+#import "BPFormFloatLabelInputCell.h"
 
 @interface BPSignUpViewController ()
 
@@ -38,7 +39,7 @@
     
     self.title = @"Sign Up";
     
-    BPFormInputCell *emailCell = [[BPFormInputCell alloc] init];
+    BPFormFloatLabelInputCell *emailCell = [[BPFormFloatLabelInputCell alloc] init];
     emailCell.textField.placeholder = @"Email";
     emailCell.textField.delegate = self;
     emailCell.customCellHeight = 50.0f;

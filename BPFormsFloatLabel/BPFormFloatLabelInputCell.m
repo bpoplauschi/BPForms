@@ -1,5 +1,5 @@
 //
-//  BPFormTextField.m
+//  BPFormFloatLabelInputCell.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,22 +21,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#import "BPFormFloatLabelInputCell.h"
+#import "BPFormFloatLabelTextField.h"
+#import "BPAppearance.h"
 
-#import "BPFormTextField.h"
-#import "BPFormInputCell.h"
-#import "UITextField+BPForms.h"
+@implementation BPFormFloatLabelInputCell
 
-@implementation BPFormTextField
-
-/**
- *  The following methods add an x offset to the textfield text
- */
-- (CGRect)textRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
++ (Class)textFieldClass {
+    return [BPFormFloatLabelTextField class];
 }
 
-- (CGRect)editingRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        if ([self.textField isKindOfClass:[BPFormFloatLabelTextField class]]) {
+            BPFormFloatLabelTextField *floatLabelTextField = (BPFormFloatLabelTextField *)self.textField;
+            
+            [floatLabelTextField floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
+            [floatLabelTextField floatingLabel].backgroundColor = [UIColor clearColor];
+        }
+    }
+    return self;
 }
 
 @end

@@ -55,11 +55,15 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
 
 @implementation BPFormInputCell
 
-+(void)setMandatoryImageName:(NSString *)inMandatoryImageName {
++ (Class)textFieldClass {
+    return [BPFormTextField class];
+}
+
++ (void)setMandatoryImageName:(NSString *)inMandatoryImageName {
     BPMandatoryImageName = inMandatoryImageName;
 }
 
-+(void)setValidImageName:(NSString *)inValidImageName invalidImageName:(NSString *)inInvalidImageName {
++ (void)setValidImageName:(NSString *)inValidImageName invalidImageName:(NSString *)inInvalidImageName {
     BPValidImageName = inValidImageName;
     BPInvalidImageName = inInvalidImageName;
 }
@@ -83,7 +87,12 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
 }
 
 - (void)setupTextField {
-    self.textField = [[BPFormTextField alloc] init];
+    Class textFieldClass = [[self class] textFieldClass];
+    if (!textFieldClass) {
+        textFieldClass = [BPFormTextField class];
+    }
+    
+    self.textField = [[textFieldClass alloc] init];
     
     self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;

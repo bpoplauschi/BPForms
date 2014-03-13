@@ -1,5 +1,5 @@
 //
-//  BPFormTextField.m
+//  BPFormFloatLabelTextField.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,12 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-#import "BPFormTextField.h"
-#import "BPFormInputCell.h"
+#import "BPFormFloatLabelTextField.h"
 #import "UITextField+BPForms.h"
 
-@implementation BPFormTextField
+
+@implementation BPFormFloatLabelTextField
 
 /**
  *  The following methods add an x offset to the textfield text
