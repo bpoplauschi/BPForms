@@ -3,6 +3,8 @@ BPForms
 
 Dynamic forms for iPhone/iPad - iOS 6, 7 and later (ispired from [BZGFormViewController](https://github.com/benzguo/BZGFormViewController)).
 
+Now integrated with the well known [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField).
+
 <p align="left" >
   <img src="BPForms.jpeg" title="BPForms demo image" float=left width=300 hspace=40>
   <img src="BPForms.gif" title="BPForms demo" float=right width=300>
@@ -12,7 +14,7 @@ Dynamic forms for iPhone/iPad - iOS 6, 7 and later (ispired from [BZGFormViewCon
 
 ### install via CocoaPods
 ```ruby
-platform :ios, '6.1'
+platform :ios, '6.0'
 pod 'BPForms'
 ```
 
@@ -29,12 +31,16 @@ pod 'BPForms'
 #### Cells
 - BPFormCell
   - BPFormInputCell (uses BPFormTextField)
+  - BPFormFloatLabelInputCell (uses BPFormFloatLabelTextField) - utilises the famous `JVFloatLabeledTextField`
   - BPFormButtonCell
   - BPFormInfoCell
 
 #### Appearance
 - BPAppearance
 
+## Dependencies
+- [Masonry](https://github.com/cloudkite/Masonry)
+- [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField)
 
 ## Demo
 
@@ -46,33 +52,21 @@ For any form you create, you should subclass ```BPFormViewController``` or just 
 
 #### Create an input cell
 
+You can screate simple input cells (`BPFormInputCell`) or input cells where the label floats above the text value (`BPFormFloatLabelInputCell` - see screenshot).
+
 Just set the properties you need and make sure you set the ```BPFormViewController``` instance as delegate for the ```textField```.
 ```shouldChangeBlock``` is used to verify the data entered, so please add the verification code (see example).
 
 ```objectivec
-BPFormInputCell *emailCell = [[BPFormInputCell alloc] init];
+BPFormFloatLabelInputCell *emailCell = [[BPFormFloatLabelInputCell alloc] init];
 emailCell.textField.placeholder = @"Email";
 emailCell.textField.delegate = self;
 emailCell.customCellHeight = 50.0f;
 emailCell.mandatory = YES;
-emailCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
-    static NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    
-    NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegEx
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
-    
-    if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
-        inCell.validationState = BPFormValidationStateValid;
-        inCell.shouldShowInfoCell = NO;
-    } else {
-        inCell.validationState = BPFormValidationStateInvalid;
-        inCell.infoCell.label.text = @"The email should look like name@provider.domain";
-        inCell.shouldShowInfoCell = YES;
-    }
-    return YES;
-};
+emailCell.shouldChangeTextBlock =
+        BPTextFieldValidateBlockWithPatternAndMessage(
+            @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
+            @"The email should look like name@provider.domain");
 ```
 
 #### Create a button cell
