@@ -48,8 +48,6 @@
         
         self.customSectionHeaderHeight = 0.0;
         self.customSectionFooterHeight = 0.0;
-        
-        [self setupTableView];
     }
     
     return self;
@@ -58,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self setupTableView];
     
     // need to react to keyboard, in detail make the table view visible at all time, so scrolling is available when the keyboard is on
     [[NSNotificationCenter defaultCenter] addObserver:self
