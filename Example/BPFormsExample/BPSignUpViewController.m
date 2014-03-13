@@ -103,6 +103,12 @@
     signUpCell.button.layer.masksToBounds = YES;
     signUpCell.buttonActionBlock = ^(void){
         NSLog(@"Button pressed");
+        
+        [emailCell.textField resignFirstResponder];
+        [passwordCell.textField resignFirstResponder];
+        [password2Cell.textField resignFirstResponder];
+        [nameCell.textField resignFirstResponder];
+        [phoneCell.textField resignFirstResponder];
     };
     
     self.formCells = @[@[emailCell, passwordCell, password2Cell, nameCell, phoneCell], @[signUpCell]];
