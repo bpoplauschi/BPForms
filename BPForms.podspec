@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'BPForms'
-  s.version  = '1.0.1'
+  s.version  = '1.1.0'
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
   s.summary  = 'Dynamic forms for iPhone/iPad - iOS 6, 7 and later.'
   s.homepage = 'https://github.com/bpoplauschi/BPForms'
@@ -15,9 +15,19 @@ Pod::Spec.new do |s|
 
   s.preserve_paths = 'README*'
 
-  s.public_header_files = 'BPForms/**/*.h'
-  s.source_files = 'BPForms/**/*.{h,m}'
+  s.default_subspec = 'FloatLabel'
 
-  s.dependency 'Masonry'
+  s.subspec 'Core' do |core|
+    core.source_files = 'BPForms/**/*.{h,m}'
+    core.public_header_files = 'BPForms/**/*.h'
+    core.dependency 'Masonry'
+  end
+
+  s.subspec 'FloatLabel' do |floatlabel|
+    floatlabel.source_files = 'BPFormsFloatLabel/*.{h,m}'
+    floatlabel.public_header_files = 'BPFormsFloatLabel/*.h'
+    floatlabel.dependency 'BPForms/Core'
+    floatlabel.dependency 'JVFloatLabeledTextField'
+  end
   
 end
