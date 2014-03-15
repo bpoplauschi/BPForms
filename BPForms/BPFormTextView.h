@@ -1,5 +1,5 @@
 //
-//  BPFormCell.h
+//  BPFormTextView.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,40 +21,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-typedef NS_ENUM(NSInteger, BPFormValidationState) {
-    BPFormValidationStateInvalid = -1,
-    BPFormValidationStateValid,
-    BPFormValidationStateNone
-};
-
-
-@class BPFormInfoCell;
-
-/**
- *  Base form cell class, holds common fields
- */
-@interface BPFormCell : UITableViewCell
-
-@property (nonatomic, assign) CGFloat customCellHeight;             // set this to use any height for the cell
-
-@property (nonatomic, assign, getter = isMandatory) BOOL mandatory; // if set to YES, an icon will appear next the the cell indicating this is mandatory
-
-@property (nonatomic, strong) BPFormInfoCell *infoCell;             // the info cell describing the cell state (i.e. the reason why the validation failed)
-
-@property (nonatomic, assign) BOOL shouldShowInfoCell;              // YES if the info cell needs to be displayed
-
-/**
- *  Calculate the cell height
- *  If customCellHeight is set, returns that value, otherwise it just measures the size of the cell.
- *
- *  @return the cell height
- */
-- (CGFloat)cellHeight;
-
-/**
- *  Refresh the mandatory state based on isMandatory
- */
-- (void)refreshMandatoryState;
+@interface BPFormTextView : UITextView
 
 @end

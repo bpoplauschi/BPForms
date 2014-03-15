@@ -1,5 +1,5 @@
 //
-//  BPFormCell.h
+//  UITextView+BPForms.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,40 +21,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-typedef NS_ENUM(NSInteger, BPFormValidationState) {
-    BPFormValidationStateInvalid = -1,
-    BPFormValidationStateValid,
-    BPFormValidationStateNone
-};
+@class BPFormMultiLineInputCell;
 
 
-@class BPFormInfoCell;
+@interface UITextView (BPForms)
 
 /**
- *  Base form cell class, holds common fields
- */
-@interface BPFormCell : UITableViewCell
-
-@property (nonatomic, assign) CGFloat customCellHeight;             // set this to use any height for the cell
-
-@property (nonatomic, assign, getter = isMandatory) BOOL mandatory; // if set to YES, an icon will appear next the the cell indicating this is mandatory
-
-@property (nonatomic, strong) BPFormInfoCell *infoCell;             // the info cell describing the cell state (i.e. the reason why the validation failed)
-
-@property (nonatomic, assign) BOOL shouldShowInfoCell;              // YES if the info cell needs to be displayed
-
-/**
- *  Calculate the cell height
- *  If customCellHeight is set, returns that value, otherwise it just measures the size of the cell.
+ *  Retrieve the input cell containing the current text field
  *
- *  @return the cell height
+ *  @return the instance of the BPFormInputCell or nil
  */
-- (CGFloat)cellHeight;
+- (BPFormMultiLineInputCell *)containerInputCell;
 
 /**
- *  Refresh the mandatory state based on isMandatory
+ *  Adds an X offset to bounds. Used by `textRectForBounds` and `editingRectForBounds` methods.
+ *  The purpose is to avoid text values starting right from the edge.
+ *
+ *  @param xOffset  x offset in pixels
+ *  @param inBounds the input bounds
+ *
+ *  @return the output bounds
  */
-- (void)refreshMandatoryState;
+- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds;
+
 
 @end

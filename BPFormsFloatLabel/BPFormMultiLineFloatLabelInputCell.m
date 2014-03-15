@@ -1,5 +1,5 @@
 //
-//  BPFormCell.h
+//  BPFormMultiLineFloatLabelInputCell.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -22,39 +22,27 @@
 //  SOFTWARE.
 
 
-typedef NS_ENUM(NSInteger, BPFormValidationState) {
-    BPFormValidationStateInvalid = -1,
-    BPFormValidationStateValid,
-    BPFormValidationStateNone
-};
+#import "BPFormMultiLineFloatLabelInputCell.h"
+#import "BPFormFloatLabelTextView.h"
+#import "BPAppearance.h"
 
+@implementation BPFormMultiLineFloatLabelInputCell
 
-@class BPFormInfoCell;
++ (Class)textViewClass {
+    return [BPFormFloatLabelTextView class];
+}
 
-/**
- *  Base form cell class, holds common fields
- */
-@interface BPFormCell : UITableViewCell
-
-@property (nonatomic, assign) CGFloat customCellHeight;             // set this to use any height for the cell
-
-@property (nonatomic, assign, getter = isMandatory) BOOL mandatory; // if set to YES, an icon will appear next the the cell indicating this is mandatory
-
-@property (nonatomic, strong) BPFormInfoCell *infoCell;             // the info cell describing the cell state (i.e. the reason why the validation failed)
-
-@property (nonatomic, assign) BOOL shouldShowInfoCell;              // YES if the info cell needs to be displayed
-
-/**
- *  Calculate the cell height
- *  If customCellHeight is set, returns that value, otherwise it just measures the size of the cell.
- *
- *  @return the cell height
- */
-- (CGFloat)cellHeight;
-
-/**
- *  Refresh the mandatory state based on isMandatory
- */
-- (void)refreshMandatoryState;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        if ([self.textView isKindOfClass:[BPFormFloatLabelTextView class]]) {
+            BPFormFloatLabelTextView *floatLabelTextView = (BPFormFloatLabelTextView *)self.textView;
+            
+            [floatLabelTextView floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
+            [floatLabelTextView floatingLabel].backgroundColor = [UIColor clearColor];
+        }
+    }
+    return self;
+}
 
 @end

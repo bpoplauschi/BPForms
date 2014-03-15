@@ -25,7 +25,7 @@
 /**
  *  Main class, represents the form controller
  */
-@interface BPFormViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface BPFormViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 /**
  *  The table view

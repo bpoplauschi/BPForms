@@ -26,10 +26,12 @@
 #import "BPAppearance.h"
 #import "BPFormCell.h"
 #import "BPFormInputCell.h"
+#import "BPFormMultiLineInputCell.h"
 #import "BPFormTextField.h"
 #import "BPFormInfoCell.h"
 #import <Masonry.h>
 #import "UITextField+BPForms.h"
+#import "UITextView+BPForms.h"
 
 
 @interface BPFormViewController ()
@@ -42,16 +44,28 @@
 
 @implementation BPFormViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.sectionHeaderTitles = [NSMutableDictionary dictionary];
-        self.sectionFooterTitles = [NSMutableDictionary dictionary];
-        
-        self.customSectionHeaderHeight = 0.0;
-        self.customSectionFooterHeight = 0.0;
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setupFormVC];
     }
     
     return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        [self setupFormVC];
+    }
+    
+    return self;
+}
+
+- (void)setupFormVC {
+    self.sectionHeaderTitles = [NSMutableDictionary dictionary];
+    self.sectionFooterTitles = [NSMutableDictionary dictionary];
+    
+    self.customSectionHeaderHeight = 0.0;
+    self.customSectionFooterHeight = 0.0;
 }
 
 - (void)viewDidLoad {
@@ -67,8 +81,8 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
                                                object:nil];
 }
 
@@ -89,7 +103,7 @@
     }];
 }
 
-- (void)keyboardWillHide:(NSNotification *)inNotification {
+- (void)keyboardDidHide:(NSNotification *)inNotification {
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(self.view.mas_height);
     }];
@@ -303,8 +317,60 @@
     return nil;
 }
 
+#pragma mark - UITextViewDelegate
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    if (!cell) {
+        return;
+    }
+    if (cell.didBeginEditingBlock) {
+        cell.didBeginEditingBlock(cell, textView.text);
+    }
+    [self updateInfoCellBelowMultiLineInputCell:cell];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    if (!cell) {
+        return;
+    }
+    
+    // executing the shouldChangeTextBlock to validate the text
+    if (cell.shouldChangeTextBlock) {
+        cell.shouldChangeTextBlock(cell, textView.text);
+    }
+    
+    if (cell.didEndEditingBlock) {
+        cell.didEndEditingBlock(cell, textView.text);
+    }
+    
+    [self updateInfoCellBelowMultiLineInputCell:cell];
+    [cell updateAccordingToValidationState];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    BOOL shouldChange = YES;
+    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    
+    if (!cell) {
+        return YES;
+    }
+    
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    if (cell.shouldChangeTextBlock) {
+        shouldChange = cell.shouldChangeTextBlock(cell, newText);
+    }
+    [self updateInfoCellBelowMultiLineInputCell:cell];
+    [cell updateAccordingToValidationState];
+    
+    return shouldChange;
+}
+
 #pragma mark - Show / hide info cells
-- (BPFormInfoCell *)infoCellBelowInputCell:(BPFormInputCell *)inInputCell {
+- (BPFormInfoCell *)infoCellBelowInputCell:(BPFormCell *)inInputCell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:inInputCell];
     NSIndexPath *nextPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
     UITableViewCell *cellBelow = [self.tableView cellForRowAtIndexPath:nextPath];
@@ -314,7 +380,7 @@
     return nil;
 }
 
-- (void)showInfoCellBelowInputCell:(BPFormInputCell *)inInputCell {
+- (void)showInfoCellBelowInputCell:(BPFormCell *)inInputCell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:inInputCell];
     
     BPFormInfoCell *infoCell = [self infoCellBelowInputCell:inInputCell];
@@ -340,7 +406,7 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)removeInfoCellBelowInputCell:(BPFormInputCell *)inInputCell {
+- (void)removeInfoCellBelowInputCell:(BPFormCell *)inInputCell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:inInputCell];
     
     BPFormInfoCell *infoCell = [self infoCellBelowInputCell:inInputCell];
@@ -366,6 +432,14 @@
 
 - (void)updateInfoCellBelowInputCell:(BPFormInputCell *)inInputCell {
     if (inInputCell.shouldShowInfoCell && !inInputCell.textField.editing) {
+        [self showInfoCellBelowInputCell:inInputCell];
+    } else {
+        [self removeInfoCellBelowInputCell:inInputCell];
+    }
+}
+
+- (void)updateInfoCellBelowMultiLineInputCell:(BPFormMultiLineInputCell *)inInputCell {
+    if (inInputCell.shouldShowInfoCell /*&& !inInputCell.textView.editing*/) {
         [self showInfoCellBelowInputCell:inInputCell];
     } else {
         [self removeInfoCellBelowInputCell:inInputCell];

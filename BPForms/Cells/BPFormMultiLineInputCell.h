@@ -1,5 +1,5 @@
 //
-//  BPFormInputCell.h
+//  BPFormMultiLineInputCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -23,38 +23,31 @@
 
 
 #import "BPFormCell.h"
-#import "BPFormTextField.h"
 
-@class BPFormInputCell;
+@class BPFormMultiLineInputCell;
 
-typedef void (^TextFieldEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
-typedef BOOL (^TextFieldShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
-
-TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
+typedef void (^TextViewEditingBlock)   (BPFormMultiLineInputCell *inCell, NSString *inText);
+typedef BOOL (^TextViewShouldEditBlock)(BPFormMultiLineInputCell *inCell, NSString *inText);
 
 
-/**
- *  Represents the main input cell for the form
- */
-@interface BPFormInputCell : BPFormCell
+@interface BPFormMultiLineInputCell : BPFormCell
 
 // UI components
-@property (nonatomic, strong) UITextField       *textField;
+@property (nonatomic, strong) UITextView        *textView;
 @property (nonatomic, strong) UIImageView       *mandatoryImageView;
 @property (nonatomic, strong) UIImageView       *validationImageView;
 
 @property (nonatomic, assign) BPFormValidationState validationState;
 
 // Blocks matching the UITextFieldDelegate methods
-@property (nonatomic, copy) TextFieldEditingBlock    didBeginEditingBlock;  // Block called from `textFieldDidBeginEditing:`
-@property (nonatomic, copy) TextFieldEditingBlock    didEndEditingBlock;    // Block called from `textFieldDidBeginEditing:`
-@property (nonatomic, copy) TextFieldShouldEditBlock shouldChangeTextBlock; // Block called from `textfield:shouldChangeCharactersInRange:replacementString:`. Return YES if the text should change
-@property (nonatomic, copy) TextFieldShouldEditBlock shouldReturnBlock;     // Block called from `textFieldShouldReturn:`. Return YES if the text should change
+@property (nonatomic, copy) TextViewEditingBlock    didBeginEditingBlock;  // Block called from `textViewDidBeginEditing:`
+@property (nonatomic, copy) TextViewEditingBlock    didEndEditingBlock;    // Block called from `textViewDidEndEditing:`
+@property (nonatomic, copy) TextViewShouldEditBlock shouldChangeTextBlock; // Block called from `textview:shouldChangeCharactersInRange:replacementString:`. Return YES if the text should change
 
 /**
- *  By default BPFormInputCell uses the BPFormTextField class for text fields. This can be customized by providing a different class
+ *  By default BPFormMultiLineInputCell uses the BPFormTextView class for text fields. This can be customized by providing a different class
  */
-+ (Class)textFieldClass;
++ (Class)textViewClass;
 
 /**
  *  Will update the UI according to the validation state
