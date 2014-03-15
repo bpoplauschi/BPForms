@@ -29,11 +29,20 @@
 
 @implementation BPFormButtonCell
 
+- (id)initWithButtonHeight:(CGFloat)inButtonHeight {
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    if (self) {
+        [self setupCell];
+        [self setupButtonWithHeight:inButtonHeight];
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self setupCell];
-        [self setupButton];
+        [self setupButtonWithHeight:[BPAppearance sharedInstance].elementHeight];
     }
     return self;
 }
@@ -43,7 +52,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)setupButton {
+- (void)setupButtonWithHeight:(CGFloat)inHeight {
     self.button = [UIButton buttonWithType:UIButtonTypeCustom];
     self.button.backgroundColor = [UIColor clearColor];
     [self.button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
