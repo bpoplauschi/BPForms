@@ -64,7 +64,7 @@
         make.width.equalTo(@([BPAppearance sharedInstance].elementWidth));
         make.centerX.equalTo(self.mas_centerX);
         make.top.equalTo(self.mas_top);
-        make.height.equalTo(@([BPAppearance sharedInstance].elementHeight));
+        make.height.equalTo(@(inHeight));
     }];
 }
 
