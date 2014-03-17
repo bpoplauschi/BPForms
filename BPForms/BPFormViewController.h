@@ -63,4 +63,11 @@
  */
 - (void)setFooterTitle:(NSString *)inFooterTitle forSection:(int)inSection;
 
+/**
+ *  Checks all the form cells if they are valid
+ *
+ *  @return YES if all the cells are valid
+ */
+- (BOOL)allCellsAreValid;
+
 @end
