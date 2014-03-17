@@ -26,17 +26,20 @@ pod 'BPForms'
 ## Architecture
 
 #### Form
-- BPFormViewController
+- ```BPFormViewController```
 
 #### Cells
-- BPFormCell
-  - BPFormInputCell (uses BPFormTextField)
-  - BPFormFloatLabelInputCell (uses BPFormFloatLabelTextField) - utilises the famous `JVFloatLabeledTextField`
-  - BPFormButtonCell
-  - BPFormInfoCell
+- ```BPFormCell``` implements ```BPFormCellProtocol```
+  - ```BPFormInputCell``` - "abstract class" and base class for all input cells
+    - ```BPFormInputTextFieldCell``` uses ```BPFormTextField```
+      - ```BPFormFloatInputTextFieldCell``` uses ```BPFormFloatLabelTextField```
+    - ```BPFormInputTextViewCell``` uses ```BPFormTextView```
+      - ```BPFormFloatInputTextViewCell``` uses ```BPFormFloatLabelTextView```
+  - ```BPFormButtonCell```
+- ```BPFormInfoCell``` implements ```BPFormCellProtocol```
 
 #### Appearance
-- BPAppearance
+- ```BPAppearance```
 
 ## Dependencies
 - [Masonry](https://github.com/cloudkite/Masonry)
@@ -52,13 +55,13 @@ For any form you create, you should subclass ```BPFormViewController``` or just 
 
 #### Create an input cell
 
-You can screate simple input cells (`BPFormInputCell`) or input cells where the label floats above the text value (`BPFormFloatLabelInputCell` - see screenshot).
+You can create simple input cells (```BPFormInputTextFieldCell```) or input cells where the label floats above the text value (```BPFormFloatInputTextFieldCell``` - see screenshot).
 
 Just set the properties you need and make sure you set the ```BPFormViewController``` instance as delegate for the ```textField```.
 ```shouldChangeBlock``` is used to verify the data entered, so please add the verification code (see example).
 
 ```objectivec
-BPFormFloatLabelInputCell *emailCell = [[BPFormFloatLabelInputCell alloc] init];
+BPFormFloatInputTextFieldCell *emailCell = [[BPFormFloatInputTextFieldCell alloc] init];
 emailCell.textField.placeholder = @"Email";
 emailCell.textField.delegate = self;
 emailCell.customCellHeight = 50.0f;
