@@ -44,6 +44,9 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
         if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
             inCell.validationState = BPFormValidationStateValid;
             inCell.shouldShowInfoCell = NO;
+        } else if (!inCell.mandatory && !inText.length) {
+            inCell.validationState = BPFormValidationStateNone;
+            inCell.shouldShowInfoCell = NO;
         } else {
             inCell.validationState = BPFormValidationStateInvalid;
             inCell.infoCell.label.text = message;
