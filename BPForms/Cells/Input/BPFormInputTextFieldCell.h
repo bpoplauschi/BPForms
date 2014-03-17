@@ -25,4 +25,7 @@
 
 @interface BPFormInputTextFieldCell : BPFormInputCell
 
+// UI components
+@property (nonatomic, strong) UITextField *textField;
+
 @end

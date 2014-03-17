@@ -31,6 +31,8 @@
 #import <Masonry.h>
 #import "UITextField+BPForms.h"
 #import "UITextView+BPForms.h"
+#import "BPFormInputTextFieldCell.h"
+#import "BPFormInputTextViewCell.h"
 
 
 @interface BPFormViewController ()
@@ -305,9 +307,13 @@
     
     BPFormInputCell *nextCell = [self nextInputCell:cell];
     if (!nextCell) {
-        [cell.textField resignFirstResponder];
+        [textField resignFirstResponder];
     } else {
-        [nextCell.textField becomeFirstResponder];
+        if ([nextCell isKindOfClass:[BPFormInputTextFieldCell class]]) {
+            [((BPFormInputTextFieldCell*)nextCell).textField becomeFirstResponder];
+        } else if ([nextCell isKindOfClass:[BPFormInputTextViewCell class]]) {
+            [((BPFormInputTextViewCell*)nextCell).textView becomeFirstResponder];
+        }
     }
     
     [self updateInfoCellBelowInputCell:cell];
@@ -342,7 +348,7 @@
     if (cell.didBeginEditingBlock) {
         cell.didBeginEditingBlock(cell, textView.text);
     }
-    [self updateInfoCellBelowMultiLineInputCell:cell];
+    [self updateInfoCellBelowInputCell:cell];
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -363,7 +369,7 @@
         cell.didEndEditingBlock(cell, textView.text);
     }
     
-    [self updateInfoCellBelowMultiLineInputCell:cell];
+    [self updateInfoCellBelowInputCell:cell];
     [cell updateAccordingToValidationState];
 }
 
@@ -379,7 +385,7 @@
     if (cell.shouldChangeTextBlock) {
         shouldChange = cell.shouldChangeTextBlock(cell, newText);
     }
-    [self updateInfoCellBelowMultiLineInputCell:cell];
+    [self updateInfoCellBelowInputCell:cell];
     [cell updateAccordingToValidationState];
     
     return shouldChange;
@@ -447,20 +453,16 @@
 }
 
 - (void)updateInfoCellBelowInputCell:(BPFormInputCell *)inInputCell {
-    if (inInputCell.shouldShowInfoCell && !inInputCell.textField.editing) {
+    BOOL isEditing = NO;
+    if ([inInputCell isKindOfClass:[BPFormInputTextFieldCell class]]) {
+        isEditing = ((BPFormInputTextFieldCell*)inInputCell).textField.isEditing;
+    }
+    
+    if (inInputCell.shouldShowInfoCell && !isEditing) {
         [self showInfoCellBelowInputCell:inInputCell];
     } else {
         [self removeInfoCellBelowInputCell:inInputCell];
     }
 }
-
-- (void)updateInfoCellBelowMultiLineInputCell:(BPFormInputCell *)inInputCell {
-    if (inInputCell.shouldShowInfoCell /*&& !inInputCell.textView.editing*/) {
-        [self showInfoCellBelowInputCell:inInputCell];
-    } else {
-        [self removeInfoCellBelowInputCell:inInputCell];
-    }
-}
-
 
 @end

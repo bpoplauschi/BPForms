@@ -38,9 +38,6 @@ BPFormInputCellShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSS
  */
 @interface BPFormInputCell : BPFormCell
 
-// UI components
-@property (nonatomic, strong) UITextField       *textField;
-
 // Blocks matching the UITextFieldDelegate methods
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didBeginEditingBlock;
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didEndEditingBlock;

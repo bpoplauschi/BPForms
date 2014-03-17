@@ -26,6 +26,6 @@
 @interface BPFormInputTextViewCell : BPFormInputCell
 
 // UI components
-@property (nonatomic, strong) UITextView        *textView;
+@property (nonatomic, strong) UITextView  *textView;
 
 @end
