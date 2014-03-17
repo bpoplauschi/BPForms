@@ -11,7 +11,6 @@
 		43CB63CD18D4988E00FEAC2E /* BPFormMultiLineInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63CC18D4988E00FEAC2E /* BPFormMultiLineInputCell.m */; };
 		43CB63D218D4989900FEAC2E /* BPFormTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63CF18D4989900FEAC2E /* BPFormTextView.m */; };
 		43CB63D318D4989900FEAC2E /* UITextView+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63D118D4989900FEAC2E /* UITextView+BPForms.m */; };
-		43CB63D618D498DB00FEAC2E /* BPFormChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63D518D498DB00FEAC2E /* BPFormChooseCell.m */; };
 		DA192D0618C752BD0025FFB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0518C752BD0025FFB4 /* Foundation.framework */; };
 		DA192D0818C752BD0025FFB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0718C752BD0025FFB4 /* CoreGraphics.framework */; };
 		DA192D0A18C752BD0025FFB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0918C752BD0025FFB4 /* UIKit.framework */; };
@@ -63,8 +62,6 @@
 		43CB63CF18D4989900FEAC2E /* BPFormTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormTextView.m; sourceTree = "<group>"; };
 		43CB63D018D4989900FEAC2E /* UITextView+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+BPForms.h"; sourceTree = "<group>"; };
 		43CB63D118D4989900FEAC2E /* UITextView+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+BPForms.m"; sourceTree = "<group>"; };
-		43CB63D418D498DB00FEAC2E /* BPFormChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormChooseCell.h; sourceTree = "<group>"; };
-		43CB63D518D498DB00FEAC2E /* BPFormChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormChooseCell.m; sourceTree = "<group>"; };
 		BAAE235E641B4823AB1CC044 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA192D0218C752BD0025FFB4 /* BPFormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BPFormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA192D0518C752BD0025FFB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -254,8 +251,6 @@
 				DA192D4618C753370025FFB4 /* BPFormButtonCell.m */,
 				DA192D4718C753370025FFB4 /* BPFormCell.h */,
 				DA192D4818C753370025FFB4 /* BPFormCell.m */,
-				43CB63D418D498DB00FEAC2E /* BPFormChooseCell.h */,
-				43CB63D518D498DB00FEAC2E /* BPFormChooseCell.m */,
 				DA192D4918C753370025FFB4 /* BPFormInfoCell.h */,
 				DA192D4A18C753370025FFB4 /* BPFormInfoCell.m */,
 				DA192D4B18C753370025FFB4 /* BPFormInputCell.h */,
@@ -436,7 +431,6 @@
 				DA192D5018C753370025FFB4 /* BPFormCell.m in Sources */,
 				DA8A34CA18D71A420017D814 /* BPFormFloatLabelTextView.m in Sources */,
 				43CB63D318D4989900FEAC2E /* UITextView+BPForms.m in Sources */,
-				43CB63D618D498DB00FEAC2E /* BPFormChooseCell.m in Sources */,
 				DAA1ED3118C8770800FAAE03 /* BPAppearance.m in Sources */,
 				DA192D5518C758BB0025FFB4 /* BPSignUpViewController.m in Sources */,
 				DAFE2F3A18D1C9E000F3B98D /* UITextField+BPForms.m in Sources */,
