@@ -61,4 +61,11 @@
     }];
 }
 
+- (CGFloat)cellHeight {
+    if (self.customCellHeight) {
+        return self.customCellHeight;
+    }
+    return self.bounds.size.height;
+}
+
 @end

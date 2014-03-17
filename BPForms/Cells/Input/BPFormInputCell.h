@@ -1,5 +1,5 @@
 //
-//  BPFormFloatLabelInputCell.m
+//  BPFormInputCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,27 +21,35 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPFormFloatLabelInputCell.h"
-#import "BPFormFloatLabelTextField.h"
-#import "BPAppearance.h"
 
-@implementation BPFormFloatLabelInputCell
+#import "BPFormCell.h"
+#import "BPFormTextField.h"
 
-+ (Class)textFieldClass {
-    return [BPFormFloatLabelTextField class];
-}
+@class BPFormInputCell;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        if ([self.textField isKindOfClass:[BPFormFloatLabelTextField class]]) {
-            BPFormFloatLabelTextField *floatLabelTextField = (BPFormFloatLabelTextField *)self.textField;
-            
-            [floatLabelTextField floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
-            [floatLabelTextField floatingLabel].backgroundColor = [UIColor clearColor];
-        }
-    }
-    return self;
-}
+typedef void (^BPFormInputCellEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
+typedef BOOL (^BPFormInputCellShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
+
+BPFormInputCellShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
+
+
+/**
+ *  Represents the main input cell for the form
+ */
+@interface BPFormInputCell : BPFormCell
+
+// UI components
+@property (nonatomic, strong) UITextField       *textField;
+
+// Blocks matching the UITextFieldDelegate methods
+@property (nonatomic, copy) BPFormInputCellEditingBlock    didBeginEditingBlock;
+@property (nonatomic, copy) BPFormInputCellEditingBlock    didEndEditingBlock;
+@property (nonatomic, copy) BPFormInputCellShouldEditBlock shouldChangeTextBlock;
+@property (nonatomic, copy) BPFormInputCellShouldEditBlock shouldReturnBlock;
+
+/**
+ *  By default BPFormInputCell uses the BPFormTextField/BPFormTextView class for text fields. This can be customized by providing a different class
+ */
++ (Class)textInputClass;
 
 @end

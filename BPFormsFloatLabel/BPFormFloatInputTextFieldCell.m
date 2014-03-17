@@ -1,5 +1,5 @@
 //
-//  UITextField+BPForms.m
+//  BPFormFloatInputTextFieldCell.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,34 +21,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "UITextField+BPForms.h"
-#import "BPFormInputCell.h"
+#import "BPFormFloatInputTextFieldCell.h"
+#import "BPFormFloatLabelTextField.h"
+#import "BPAppearance.h"
 
+@implementation BPFormFloatInputTextFieldCell
 
-@implementation UITextField (BPForms)
-
-- (BPFormInputCell *)containerInputCell {
-    UIView *view = self;
-    while ((view = view.superview)) {
-        if ([view isKindOfClass:[BPFormCell class]]) {
-            break;
-        }
-    }
-    return (BPFormInputCell *)view;
++ (Class)textInputClass {
+    return [BPFormFloatLabelTextField class];
 }
 
-- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds {
-    CGRect frame = inBounds;
-    frame.origin.x = xOffset;
-    frame.size.width -= xOffset;
-    
-    // also, on iOS6 and earlier, the text starts right from the top, so add a similar 12 pixel vertical offset
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
-        frame.origin.y += 12;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        if ([self.textField isKindOfClass:[BPFormFloatLabelTextField class]]) {
+            BPFormFloatLabelTextField *floatLabelTextField = (BPFormFloatLabelTextField *)self.textField;
+            
+            [floatLabelTextField floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
+            [floatLabelTextField floatingLabel].backgroundColor = [UIColor clearColor];
+        }
     }
-    
-    inBounds = frame;
-    return CGRectInset(inBounds, 0, 0);
+    return self;
 }
 
 @end

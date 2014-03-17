@@ -1,5 +1,5 @@
 //
-//  BPFormFloatLabelInputCell.h
+//  BPFormInputTextViewCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -23,9 +23,9 @@
 
 #import "BPFormInputCell.h"
 
-/**
- *  Input cell with floating labels. Uses `JVFloatLabeledTextField`
- */
-@interface BPFormFloatLabelInputCell : BPFormInputCell
+@interface BPFormInputTextViewCell : BPFormInputCell
+
+// UI components
+@property (nonatomic, strong) UITextView        *textView;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BPFormInputCell.m
+//  BPFormCell.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -22,45 +22,17 @@
 //  SOFTWARE.
 
 
-#import "BPFormInputCell.h"
-#import "BPFormInfoCell.h"
-#import "BPAppearance.h"
+#import "BPFormCell.h"
 #import <Masonry.h>
+#import "BPFormInfoCell.h"
+
 
 // static vars that hold image names, if those were set. Used to override the default images
 static NSString *BPMandatoryImageName = nil;
 static NSString *BPValidImageName = nil;
 static NSString *BPInvalidImageName = nil;
 
-TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message) {
-    return ^BOOL(BPFormInputCell *inCell, NSString *inText) {
-        NSString *emailRegEx = pattern;
-        
-        NSError *error = nil;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegEx
-                                                                               options:NSRegularExpressionCaseInsensitive
-                                                                                 error:&error];
-        
-        if (inText.length && (1 == [regex numberOfMatchesInString:inText options:0 range:NSMakeRange(0, [inText length])]) ) {
-            inCell.validationState = BPFormValidationStateValid;
-            inCell.shouldShowInfoCell = NO;
-        } else if (!inCell.mandatory && !inText.length) {
-            inCell.validationState = BPFormValidationStateNone;
-            inCell.shouldShowInfoCell = NO;
-        } else {
-            inCell.validationState = BPFormValidationStateInvalid;
-            inCell.infoCell.label.text = message;
-            inCell.shouldShowInfoCell = YES;
-        }
-        return YES;
-    };
-}
-
-@implementation BPFormInputCell
-
-+ (Class)textFieldClass {
-    return [BPFormTextField class];
-}
+@implementation BPFormCell
 
 + (void)setMandatoryImageName:(NSString *)inMandatoryImageName {
     BPMandatoryImageName = inMandatoryImageName;
@@ -74,8 +46,12 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setupCell];
-        [self setupTextField];
+        // Initialization code
+        self.mandatory = NO;
+        self.shouldShowInfoCell = NO;
+        self.shouldShowValidation = YES;
+        self.validationState = BPFormValidationStateNone;
+        
         [self setupMandatoryImageView];
         [self setupValidationImageView];
         [self setupInfoCell];
@@ -83,37 +59,11 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
     return self;
 }
 
-- (void)setupCell {
-    self.backgroundColor = [BPAppearance sharedInstance].inputCellBackgroundColor;
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.validationState = BPFormValidationStateNone;
-}
-
-- (void)setupTextField {
-    Class textFieldClass = [[self class] textFieldClass];
-    if (!textFieldClass) {
-        textFieldClass = [BPFormTextField class];
+- (CGFloat)cellHeight {
+    if (self.customCellHeight) {
+        return self.customCellHeight;
     }
-    
-    self.textField = [[textFieldClass alloc] init];
-    
-    self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.textField.textColor = [BPAppearance sharedInstance].inputCellTextFieldTextColor;
-    self.textField.font = [BPAppearance sharedInstance].inputCellTextFieldFont;
-    self.textField.backgroundColor = [BPAppearance sharedInstance].inputCellTextFieldBackgroundColor;
-
-    self.textField.layer.borderColor = [BPAppearance sharedInstance].inputCellTextFieldBorderColor.CGColor;
-    self.textField.layer.borderWidth = 0.5;
-    
-    [self.contentView addSubview:self.textField];
-    
-    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@([BPAppearance sharedInstance].elementWidth));
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.mas_top);
-        make.height.equalTo(@([BPAppearance sharedInstance].elementHeight));
-    }];
+    return self.bounds.size.height;
 }
 
 - (void)setupMandatoryImageView {
@@ -130,18 +80,20 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
     self.mandatoryImageView.hidden = YES;
     [self.contentView addSubview:self.mandatoryImageView];
     
-    [self.mandatoryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.mandatoryImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(asterixImage.size.width));
-        make.right.equalTo(self.textField.mas_left).with.offset(-4);
         make.top.equalTo(@4);
+        make.right.equalTo(self.mas_left).offset(4 + asterixImage.size.width).priorityLow();
         make.height.equalTo(@(asterixImage.size.height));
     }];
 }
 
 - (void)setupValidationImageView {
-    self.validationImageView = [[UIImageView alloc] init];
-    self.validationImageView.hidden = YES;
-    [self.contentView addSubview:self.validationImageView];
+    if (self.shouldShowValidation) {
+        self.validationImageView = [[UIImageView alloc] init];
+        self.validationImageView.hidden = YES;
+        [self.contentView addSubview:self.validationImageView];
+    }
 }
 
 - (void)setupInfoCell {
@@ -149,10 +101,14 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
 }
 
 - (void)refreshMandatoryState {
-    self.mandatoryImageView.hidden = !self.isMandatory;
+    self.mandatoryImageView.hidden = !self.mandatory;
 }
 
 - (void)updateAccordingToValidationState {
+    if (!self.shouldShowValidation) {
+        return;
+    }
+    
     static UIImage *checkmarkImage = nil;
     if (!checkmarkImage) {
         if (BPValidImageName.length) {
@@ -160,6 +116,13 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
         } else {
             checkmarkImage = [UIImage imageNamed:@"checkmark"];
         }
+        
+        [self.validationImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(checkmarkImage.size.width));
+            make.left.equalTo(self.mas_right).with.offset(-checkmarkImage.size.width).priorityLow();
+            make.centerY.equalTo(self.mas_centerY).priorityLow();
+            make.height.equalTo(@(checkmarkImage.size.height));
+        }];
     }
     
     static UIImage *exclamationMarkImage = nil;
@@ -170,13 +133,6 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
             exclamationMarkImage = [UIImage imageNamed:@"exclamationMark"];
         }
     }
-    
-    [self.validationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(checkmarkImage.size.width));
-        make.left.equalTo(self.textField.mas_right).with.offset(-checkmarkImage.size.width);
-        make.centerY.equalTo(self.textField.mas_centerY);
-        make.height.equalTo(@(checkmarkImage.size.height));
-    }];
     
     switch (self.validationState) {
         case BPFormValidationStateValid:

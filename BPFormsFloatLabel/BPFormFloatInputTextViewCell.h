@@ -1,5 +1,5 @@
 //
-//  UITextView+BPForms.h
+//  BPFormFloatInputTextViewCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,28 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-@class BPFormMultiLineInputCell;
 
+#import "BPFormInputTextViewCell.h"
 
-@interface UITextView (BPForms)
+@interface BPFormFloatInputTextViewCell : BPFormInputTextViewCell
 
-/**
- *  Retrieve the input cell containing the current text field
- *
- *  @return the instance of the BPFormInputCell or nil
- */
-- (BPFormMultiLineInputCell *)containerInputCell;
-
-/**
- *  Adds an X offset to bounds. Used by `textRectForBounds` and `editingRectForBounds` methods.
- *  The purpose is to avoid text values starting right from the edge.
- *
- *  @param xOffset  x offset in pixels
- *  @param inBounds the input bounds
- *
- *  @return the output bounds
- */
-- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds;
-
+- (void)setPlaceholder:(NSString *)inPlaceholder;
 
 @end

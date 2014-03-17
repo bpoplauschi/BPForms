@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DD421AF1F744922A809B698 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F74BC5856834D6B8CD2CDD7 /* libPods.a */; };
-		43CB63CD18D4988E00FEAC2E /* BPFormMultiLineInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63CC18D4988E00FEAC2E /* BPFormMultiLineInputCell.m */; };
 		43CB63D218D4989900FEAC2E /* BPFormTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63CF18D4989900FEAC2E /* BPFormTextView.m */; };
-		43CB63D318D4989900FEAC2E /* UITextView+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CB63D118D4989900FEAC2E /* UITextView+BPForms.m */; };
 		DA192D0618C752BD0025FFB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0518C752BD0025FFB4 /* Foundation.framework */; };
 		DA192D0818C752BD0025FFB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0718C752BD0025FFB4 /* CoreGraphics.framework */; };
 		DA192D0A18C752BD0025FFB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA192D0918C752BD0025FFB4 /* UIKit.framework */; };
@@ -25,10 +23,6 @@
 		DA192D3418C752BE0025FFB4 /* BPFormsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D3318C752BE0025FFB4 /* BPFormsExampleTests.m */; };
 		DA192D4D18C753370025FFB4 /* BPFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4118C753370025FFB4 /* BPFormTextField.m */; };
 		DA192D4E18C753370025FFB4 /* BPFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4318C753370025FFB4 /* BPFormViewController.m */; };
-		DA192D4F18C753370025FFB4 /* BPFormButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4618C753370025FFB4 /* BPFormButtonCell.m */; };
-		DA192D5018C753370025FFB4 /* BPFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4818C753370025FFB4 /* BPFormCell.m */; };
-		DA192D5118C753370025FFB4 /* BPFormInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4A18C753370025FFB4 /* BPFormInfoCell.m */; };
-		DA192D5218C753370025FFB4 /* BPFormInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D4C18C753370025FFB4 /* BPFormInputCell.m */; };
 		DA192D5518C758BB0025FFB4 /* BPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA192D5418C758BB0025FFB4 /* BPSignUpViewController.m */; };
 		DA192D5918C76A770025FFB4 /* asterix.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D5718C76A770025FFB4 /* asterix.png */; };
 		DA192D5A18C76A770025FFB4 /* asterix@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D5818C76A770025FFB4 /* asterix@2x.png */; };
@@ -37,10 +31,17 @@
 		DA192D6418C779130025FFB4 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D6318C779130025FFB4 /* checkmark.png */; };
 		DA192D6618C779170025FFB4 /* exclamationMark.png in Resources */ = {isa = PBXBuildFile; fileRef = DA192D6518C779170025FFB4 /* exclamationMark.png */; };
 		DA8A34CA18D71A420017D814 /* BPFormFloatLabelTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34C718D71A420017D814 /* BPFormFloatLabelTextView.m */; };
-		DA8A34CB18D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34C918D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.m */; };
+		DA8A34D918D73CB70017D814 /* BPFormFloatInputTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34D618D73CB70017D814 /* BPFormFloatInputTextFieldCell.m */; };
+		DA8A34DA18D73CB70017D814 /* BPFormFloatInputTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34D818D73CB70017D814 /* BPFormFloatInputTextViewCell.m */; };
+		DA8A34E018D73ED60017D814 /* UITextField+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34DD18D73ED60017D814 /* UITextField+BPForms.m */; };
+		DA8A34E118D73ED60017D814 /* UITextView+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34DF18D73ED60017D814 /* UITextView+BPForms.m */; };
+		DA8A34F318D73F710017D814 /* BPFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34E518D73F710017D814 /* BPFormCell.m */; };
+		DA8A34F418D73F710017D814 /* BPFormInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34E818D73F710017D814 /* BPFormInfoCell.m */; };
+		DA8A34F518D73F710017D814 /* BPFormButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34EB18D73F710017D814 /* BPFormButtonCell.m */; };
+		DA8A34F618D73F710017D814 /* BPFormInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34EE18D73F710017D814 /* BPFormInputCell.m */; };
+		DA8A34F718D73F710017D814 /* BPFormInputTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34F018D73F710017D814 /* BPFormInputTextFieldCell.m */; };
+		DA8A34F818D73F710017D814 /* BPFormInputTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A34F218D73F710017D814 /* BPFormInputTextViewCell.m */; };
 		DAA1ED3118C8770800FAAE03 /* BPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1ED3018C8770800FAAE03 /* BPAppearance.m */; };
-		DAFE2F3A18D1C9E000F3B98D /* UITextField+BPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */; };
-		DAFE2F4718D1D91A00F3B98D /* BPFormFloatLabelInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */; };
 		DAFE2F4818D1D91A00F3B98D /* BPFormFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */; };
 /* End PBXBuildFile section */
 
@@ -56,12 +57,8 @@
 
 /* Begin PBXFileReference section */
 		1F74BC5856834D6B8CD2CDD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		43CB63CB18D4988E00FEAC2E /* BPFormMultiLineInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormMultiLineInputCell.h; sourceTree = "<group>"; };
-		43CB63CC18D4988E00FEAC2E /* BPFormMultiLineInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormMultiLineInputCell.m; sourceTree = "<group>"; };
 		43CB63CE18D4989900FEAC2E /* BPFormTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormTextView.h; sourceTree = "<group>"; };
 		43CB63CF18D4989900FEAC2E /* BPFormTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormTextView.m; sourceTree = "<group>"; };
-		43CB63D018D4989900FEAC2E /* UITextView+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+BPForms.h"; sourceTree = "<group>"; };
-		43CB63D118D4989900FEAC2E /* UITextView+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+BPForms.m"; sourceTree = "<group>"; };
 		BAAE235E641B4823AB1CC044 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA192D0218C752BD0025FFB4 /* BPFormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BPFormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA192D0518C752BD0025FFB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,14 +80,6 @@
 		DA192D4118C753370025FFB4 /* BPFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormTextField.m; sourceTree = "<group>"; };
 		DA192D4218C753370025FFB4 /* BPFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormViewController.h; sourceTree = "<group>"; };
 		DA192D4318C753370025FFB4 /* BPFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormViewController.m; sourceTree = "<group>"; };
-		DA192D4518C753370025FFB4 /* BPFormButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormButtonCell.h; sourceTree = "<group>"; };
-		DA192D4618C753370025FFB4 /* BPFormButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormButtonCell.m; sourceTree = "<group>"; };
-		DA192D4718C753370025FFB4 /* BPFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormCell.h; sourceTree = "<group>"; };
-		DA192D4818C753370025FFB4 /* BPFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormCell.m; sourceTree = "<group>"; };
-		DA192D4918C753370025FFB4 /* BPFormInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInfoCell.h; sourceTree = "<group>"; };
-		DA192D4A18C753370025FFB4 /* BPFormInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInfoCell.m; sourceTree = "<group>"; };
-		DA192D4B18C753370025FFB4 /* BPFormInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInputCell.h; sourceTree = "<group>"; };
-		DA192D4C18C753370025FFB4 /* BPFormInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInputCell.m; sourceTree = "<group>"; };
 		DA192D5318C758BB0025FFB4 /* BPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPSignUpViewController.h; sourceTree = "<group>"; };
 		DA192D5418C758BB0025FFB4 /* BPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSignUpViewController.m; sourceTree = "<group>"; };
 		DA192D5718C76A770025FFB4 /* asterix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asterix.png; sourceTree = "<group>"; };
@@ -101,14 +90,29 @@
 		DA192D6518C779170025FFB4 /* exclamationMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamationMark.png; sourceTree = "<group>"; };
 		DA8A34C618D71A420017D814 /* BPFormFloatLabelTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatLabelTextView.h; sourceTree = "<group>"; };
 		DA8A34C718D71A420017D814 /* BPFormFloatLabelTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatLabelTextView.m; sourceTree = "<group>"; };
-		DA8A34C818D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormMultiLineFloatLabelInputCell.h; sourceTree = "<group>"; };
-		DA8A34C918D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormMultiLineFloatLabelInputCell.m; sourceTree = "<group>"; };
+		DA8A34D518D73CB70017D814 /* BPFormFloatInputTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatInputTextFieldCell.h; sourceTree = "<group>"; };
+		DA8A34D618D73CB70017D814 /* BPFormFloatInputTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatInputTextFieldCell.m; sourceTree = "<group>"; };
+		DA8A34D718D73CB70017D814 /* BPFormFloatInputTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatInputTextViewCell.h; sourceTree = "<group>"; };
+		DA8A34D818D73CB70017D814 /* BPFormFloatInputTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatInputTextViewCell.m; sourceTree = "<group>"; };
+		DA8A34DC18D73ED60017D814 /* UITextField+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BPForms.h"; sourceTree = "<group>"; };
+		DA8A34DD18D73ED60017D814 /* UITextField+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BPForms.m"; sourceTree = "<group>"; };
+		DA8A34DE18D73ED60017D814 /* UITextView+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+BPForms.h"; sourceTree = "<group>"; };
+		DA8A34DF18D73ED60017D814 /* UITextView+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+BPForms.m"; sourceTree = "<group>"; };
+		DA8A34E418D73F710017D814 /* BPFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormCell.h; sourceTree = "<group>"; };
+		DA8A34E518D73F710017D814 /* BPFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormCell.m; sourceTree = "<group>"; };
+		DA8A34E618D73F710017D814 /* BPFormCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormCellProtocol.h; sourceTree = "<group>"; };
+		DA8A34E718D73F710017D814 /* BPFormInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInfoCell.h; sourceTree = "<group>"; };
+		DA8A34E818D73F710017D814 /* BPFormInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInfoCell.m; sourceTree = "<group>"; };
+		DA8A34EA18D73F710017D814 /* BPFormButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormButtonCell.h; sourceTree = "<group>"; };
+		DA8A34EB18D73F710017D814 /* BPFormButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormButtonCell.m; sourceTree = "<group>"; };
+		DA8A34ED18D73F710017D814 /* BPFormInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInputCell.h; sourceTree = "<group>"; };
+		DA8A34EE18D73F710017D814 /* BPFormInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInputCell.m; sourceTree = "<group>"; };
+		DA8A34EF18D73F710017D814 /* BPFormInputTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInputTextFieldCell.h; sourceTree = "<group>"; };
+		DA8A34F018D73F710017D814 /* BPFormInputTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInputTextFieldCell.m; sourceTree = "<group>"; };
+		DA8A34F118D73F710017D814 /* BPFormInputTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormInputTextViewCell.h; sourceTree = "<group>"; };
+		DA8A34F218D73F710017D814 /* BPFormInputTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormInputTextViewCell.m; sourceTree = "<group>"; };
 		DAA1ED2F18C8770800FAAE03 /* BPAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAppearance.h; sourceTree = "<group>"; };
 		DAA1ED3018C8770800FAAE03 /* BPAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAppearance.m; sourceTree = "<group>"; };
-		DAFE2F3818D1C9E000F3B98D /* UITextField+BPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BPForms.h"; sourceTree = "<group>"; };
-		DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BPForms.m"; sourceTree = "<group>"; };
-		DAFE2F4318D1D91A00F3B98D /* BPFormFloatLabelInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatLabelInputCell.h; sourceTree = "<group>"; };
-		DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatLabelInputCell.m; sourceTree = "<group>"; };
 		DAFE2F4518D1D91A00F3B98D /* BPFormFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormFloatLabelTextField.h; sourceTree = "<group>"; };
 		DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormFloatLabelTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +230,8 @@
 		DA192D3E18C753370025FFB4 /* BPForms */ = {
 			isa = PBXGroup;
 			children = (
-				DA192D4418C753370025FFB4 /* Cells */,
+				DA8A34E218D73F710017D814 /* Cells */,
+				DA8A34DB18D73ED60017D814 /* UIKit */,
 				DAA1ED2F18C8770800FAAE03 /* BPAppearance.h */,
 				DAA1ED3018C8770800FAAE03 /* BPAppearance.m */,
 				DA192D4018C753370025FFB4 /* BPFormTextField.h */,
@@ -235,30 +240,9 @@
 				43CB63CF18D4989900FEAC2E /* BPFormTextView.m */,
 				DA192D4218C753370025FFB4 /* BPFormViewController.h */,
 				DA192D4318C753370025FFB4 /* BPFormViewController.m */,
-				DAFE2F3818D1C9E000F3B98D /* UITextField+BPForms.h */,
-				DAFE2F3918D1C9E000F3B98D /* UITextField+BPForms.m */,
-				43CB63D018D4989900FEAC2E /* UITextView+BPForms.h */,
-				43CB63D118D4989900FEAC2E /* UITextView+BPForms.m */,
 			);
 			name = BPForms;
 			path = ../BPForms;
-			sourceTree = "<group>";
-		};
-		DA192D4418C753370025FFB4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				DA192D4518C753370025FFB4 /* BPFormButtonCell.h */,
-				DA192D4618C753370025FFB4 /* BPFormButtonCell.m */,
-				DA192D4718C753370025FFB4 /* BPFormCell.h */,
-				DA192D4818C753370025FFB4 /* BPFormCell.m */,
-				DA192D4918C753370025FFB4 /* BPFormInfoCell.h */,
-				DA192D4A18C753370025FFB4 /* BPFormInfoCell.m */,
-				DA192D4B18C753370025FFB4 /* BPFormInputCell.h */,
-				DA192D4C18C753370025FFB4 /* BPFormInputCell.m */,
-				43CB63CB18D4988E00FEAC2E /* BPFormMultiLineInputCell.h */,
-				43CB63CC18D4988E00FEAC2E /* BPFormMultiLineInputCell.m */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		DA192D5618C76A770025FFB4 /* Resources */ = {
@@ -274,17 +258,72 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		DA8A34DB18D73ED60017D814 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A34DC18D73ED60017D814 /* UITextField+BPForms.h */,
+				DA8A34DD18D73ED60017D814 /* UITextField+BPForms.m */,
+				DA8A34DE18D73ED60017D814 /* UITextView+BPForms.h */,
+				DA8A34DF18D73ED60017D814 /* UITextView+BPForms.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		DA8A34E218D73F710017D814 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A34E318D73F710017D814 /* Base */,
+				DA8A34E918D73F710017D814 /* Button */,
+				DA8A34EC18D73F710017D814 /* Input */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DA8A34E318D73F710017D814 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A34E418D73F710017D814 /* BPFormCell.h */,
+				DA8A34E518D73F710017D814 /* BPFormCell.m */,
+				DA8A34E618D73F710017D814 /* BPFormCellProtocol.h */,
+				DA8A34E718D73F710017D814 /* BPFormInfoCell.h */,
+				DA8A34E818D73F710017D814 /* BPFormInfoCell.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DA8A34E918D73F710017D814 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A34EA18D73F710017D814 /* BPFormButtonCell.h */,
+				DA8A34EB18D73F710017D814 /* BPFormButtonCell.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		DA8A34EC18D73F710017D814 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A34ED18D73F710017D814 /* BPFormInputCell.h */,
+				DA8A34EE18D73F710017D814 /* BPFormInputCell.m */,
+				DA8A34EF18D73F710017D814 /* BPFormInputTextFieldCell.h */,
+				DA8A34F018D73F710017D814 /* BPFormInputTextFieldCell.m */,
+				DA8A34F118D73F710017D814 /* BPFormInputTextViewCell.h */,
+				DA8A34F218D73F710017D814 /* BPFormInputTextViewCell.m */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 		DAFE2F4218D1D91A00F3B98D /* BPFormsFloatLabel */ = {
 			isa = PBXGroup;
 			children = (
-				DAFE2F4318D1D91A00F3B98D /* BPFormFloatLabelInputCell.h */,
-				DAFE2F4418D1D91A00F3B98D /* BPFormFloatLabelInputCell.m */,
 				DAFE2F4518D1D91A00F3B98D /* BPFormFloatLabelTextField.h */,
 				DAFE2F4618D1D91A00F3B98D /* BPFormFloatLabelTextField.m */,
 				DA8A34C618D71A420017D814 /* BPFormFloatLabelTextView.h */,
 				DA8A34C718D71A420017D814 /* BPFormFloatLabelTextView.m */,
-				DA8A34C818D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.h */,
-				DA8A34C918D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.m */,
+				DA8A34D518D73CB70017D814 /* BPFormFloatInputTextFieldCell.h */,
+				DA8A34D618D73CB70017D814 /* BPFormFloatInputTextFieldCell.m */,
+				DA8A34D718D73CB70017D814 /* BPFormFloatInputTextViewCell.h */,
+				DA8A34D818D73CB70017D814 /* BPFormFloatInputTextViewCell.m */,
 			);
 			name = BPFormsFloatLabel;
 			path = ../BPFormsFloatLabel;
@@ -428,24 +467,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA192D5018C753370025FFB4 /* BPFormCell.m in Sources */,
+				DA8A34E018D73ED60017D814 /* UITextField+BPForms.m in Sources */,
+				DA8A34F318D73F710017D814 /* BPFormCell.m in Sources */,
 				DA8A34CA18D71A420017D814 /* BPFormFloatLabelTextView.m in Sources */,
-				43CB63D318D4989900FEAC2E /* UITextView+BPForms.m in Sources */,
 				DAA1ED3118C8770800FAAE03 /* BPAppearance.m in Sources */,
 				DA192D5518C758BB0025FFB4 /* BPSignUpViewController.m in Sources */,
-				DAFE2F3A18D1C9E000F3B98D /* UITextField+BPForms.m in Sources */,
 				DAFE2F4818D1D91A00F3B98D /* BPFormFloatLabelTextField.m in Sources */,
-				DA192D4F18C753370025FFB4 /* BPFormButtonCell.m in Sources */,
+				DA8A34E118D73ED60017D814 /* UITextView+BPForms.m in Sources */,
+				DA8A34F818D73F710017D814 /* BPFormInputTextViewCell.m in Sources */,
 				DA192D1618C752BE0025FFB4 /* BPAppDelegate.m in Sources */,
-				DA192D5218C753370025FFB4 /* BPFormInputCell.m in Sources */,
-				43CB63CD18D4988E00FEAC2E /* BPFormMultiLineInputCell.m in Sources */,
+				DA8A34D918D73CB70017D814 /* BPFormFloatInputTextFieldCell.m in Sources */,
 				DA192D1218C752BD0025FFB4 /* main.m in Sources */,
-				DA192D5118C753370025FFB4 /* BPFormInfoCell.m in Sources */,
+				DA8A34F718D73F710017D814 /* BPFormInputTextFieldCell.m in Sources */,
+				DA8A34F418D73F710017D814 /* BPFormInfoCell.m in Sources */,
 				DA192D4E18C753370025FFB4 /* BPFormViewController.m in Sources */,
-				DA8A34CB18D71A420017D814 /* BPFormMultiLineFloatLabelInputCell.m in Sources */,
 				43CB63D218D4989900FEAC2E /* BPFormTextView.m in Sources */,
-				DAFE2F4718D1D91A00F3B98D /* BPFormFloatLabelInputCell.m in Sources */,
+				DA8A34F618D73F710017D814 /* BPFormInputCell.m in Sources */,
+				DA8A34DA18D73CB70017D814 /* BPFormFloatInputTextViewCell.m in Sources */,
 				DA192D4D18C753370025FFB4 /* BPFormTextField.m in Sources */,
+				DA8A34F518D73F710017D814 /* BPFormButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

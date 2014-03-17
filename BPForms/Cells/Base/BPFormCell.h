@@ -1,5 +1,5 @@
 //
-//  BPFormInputCell.h
+//  BPFormCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,40 +21,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#import "BPFormCellProtocol.h"
 
-#import "BPFormCell.h"
-#import "BPFormTextField.h"
 
-@class BPFormInputCell;
+typedef NS_ENUM(NSInteger, BPFormValidationState) {
+    BPFormValidationStateInvalid = -1,
+    BPFormValidationStateValid,
+    BPFormValidationStateNone
+};
 
-typedef void (^TextFieldEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
-typedef BOOL (^TextFieldShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
 
-TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
-
+@class BPFormInfoCell;
 
 /**
- *  Represents the main input cell for the form
+ *  Base form cell class, holds common fields
  */
-@interface BPFormInputCell : BPFormCell
-
-// UI components
-@property (nonatomic, strong) UITextField       *textField;
-@property (nonatomic, strong) UIImageView       *mandatoryImageView;
-@property (nonatomic, strong) UIImageView       *validationImageView;
+@interface BPFormCell : UITableViewCell <BPFormCellProtocol>
 
 @property (nonatomic, assign) BPFormValidationState validationState;
 
-// Blocks matching the UITextFieldDelegate methods
-@property (nonatomic, copy) TextFieldEditingBlock    didBeginEditingBlock;  // Block called from `textFieldDidBeginEditing:`
-@property (nonatomic, copy) TextFieldEditingBlock    didEndEditingBlock;    // Block called from `textFieldDidBeginEditing:`
-@property (nonatomic, copy) TextFieldShouldEditBlock shouldChangeTextBlock; // Block called from `textfield:shouldChangeCharactersInRange:replacementString:`. Return YES if the text should change
-@property (nonatomic, copy) TextFieldShouldEditBlock shouldReturnBlock;     // Block called from `textFieldShouldReturn:`. Return YES if the text should change
+@property (nonatomic, assign) CGFloat               customCellHeight;   // set this to use any height for the cell
+
+@property (nonatomic, assign) BOOL                  mandatory;          // if set to YES, an icon will appear next the the cell indicating this is mandatory
+
+@property (nonatomic, strong) BPFormInfoCell        *infoCell;          // the info cell describing the cell state (i.e. the reason why the validation failed)
+
+@property (nonatomic, assign) BOOL                  shouldShowInfoCell; // YES if the info cell needs to be displayed
+
+@property (nonatomic, assign) BOOL                  shouldShowValidation;
+
+// UI controls
+@property (nonatomic, strong) UIImageView           *mandatoryImageView;
+@property (nonatomic, strong) UIImageView           *validationImageView;
 
 /**
- *  By default BPFormInputCell uses the BPFormTextField class for text fields. This can be customized by providing a different class
+ *  Refresh the mandatory state based on isMandatory
  */
-+ (Class)textFieldClass;
+- (void)refreshMandatoryState;
 
 /**
  *  Will update the UI according to the validation state
@@ -75,5 +78,6 @@ TextFieldShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString 
  *  @param inInvalidImageName - the image name must point to a file in the main bundle
  */
 + (void)setValidImageName:(NSString *)inValidImageName invalidImageName:(NSString *)inInvalidImageName;
+
 
 @end

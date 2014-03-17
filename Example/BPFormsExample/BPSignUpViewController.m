@@ -22,10 +22,10 @@
 //  SOFTWARE.
 
 #import "BPSignUpViewController.h"
-#import "BPFormInputCell.h"
 #import "BPFormButtonCell.h"
 #import "BPFormInfoCell.h"
-#import "BPFormFloatLabelInputCell.h"
+#import "BPFormFloatInputTextFieldCell.h"
+#import "BPFormFloatInputTextViewCell.h"
 
 @interface BPSignUpViewController ()
 
@@ -39,7 +39,7 @@
     
     self.title = @"Sign Up";
     
-    BPFormFloatLabelInputCell *emailCell = [[BPFormFloatLabelInputCell alloc] init];
+    BPFormFloatInputTextFieldCell *emailCell = [[BPFormFloatInputTextFieldCell alloc] init];
     emailCell.textField.placeholder = @"Email";
     emailCell.textField.delegate = self;
     emailCell.customCellHeight = 50.0f;
@@ -49,7 +49,7 @@
             @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
             @"The email should look like name@provider.domain");
     
-    BPFormFloatLabelInputCell *passwordCell = [[BPFormFloatLabelInputCell alloc] init];
+    BPFormFloatInputTextFieldCell *passwordCell = [[BPFormFloatInputTextFieldCell alloc] init];
     passwordCell.textField.placeholder = @"Password";
     passwordCell.textField.delegate = self;
     passwordCell.textField.secureTextEntry = YES;
@@ -67,7 +67,7 @@
         return YES;
     };
 
-    BPFormFloatLabelInputCell *password2Cell = [[BPFormFloatLabelInputCell alloc] init];
+    BPFormFloatInputTextFieldCell *password2Cell = [[BPFormFloatInputTextFieldCell alloc] init];
     password2Cell.textField.placeholder = @"Verify Password";
     password2Cell.textField.delegate = self;
     password2Cell.textField.secureTextEntry = YES;
@@ -85,16 +85,33 @@
         return YES;
     };
     
-    BPFormFloatLabelInputCell *nameCell = [[BPFormFloatLabelInputCell alloc] init];
+    BPFormFloatInputTextFieldCell *nameCell = [[BPFormFloatInputTextFieldCell alloc] init];
     nameCell.textField.placeholder = @"Name";
     nameCell.textField.delegate = self;
     nameCell.customCellHeight = 50.0f;
     
-    BPFormFloatLabelInputCell *phoneCell = [[BPFormFloatLabelInputCell alloc] init];
+    BPFormFloatInputTextFieldCell *phoneCell = [[BPFormFloatInputTextFieldCell alloc] init];
     phoneCell.textField.placeholder = @"Phone";
     phoneCell.textField.delegate = self;
     phoneCell.textField.keyboardType = UIKeyboardTypePhonePad;
     phoneCell.customCellHeight = 50.0f;
+    
+    BPFormFloatInputTextViewCell *descriptionCell = [[BPFormFloatInputTextViewCell alloc]  init];
+    descriptionCell.textView.delegate = self;
+    descriptionCell.customCellHeight = 100.0f;
+    descriptionCell.mandatory = NO;
+    [descriptionCell setPlaceholder:@"Description"];
+    descriptionCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
+        if (inText.length) {
+            inCell.validationState = BPFormValidationStateValid;
+            inCell.shouldShowInfoCell = NO;
+        } else {
+            inCell.validationState = BPFormValidationStateInvalid;
+            inCell.infoCell.label.text = @"No description";
+            inCell.shouldShowInfoCell = YES;
+        }
+        return YES;
+    };
     
     BPFormButtonCell *signUpCell = [[BPFormButtonCell alloc] init];
     signUpCell.button.backgroundColor = [UIColor blueColor];
@@ -109,9 +126,10 @@
         [password2Cell.textField resignFirstResponder];
         [nameCell.textField resignFirstResponder];
         [phoneCell.textField resignFirstResponder];
+        [descriptionCell.textView resignFirstResponder];
     };
     
-    self.formCells = @[@[emailCell, passwordCell, password2Cell, nameCell, phoneCell], @[signUpCell]];
+    self.formCells = @[@[emailCell, passwordCell, password2Cell, nameCell, phoneCell, descriptionCell], @[signUpCell]];
     
     [self setHeaderTitle:@"Please enter your credentials" forSection:0];
     [self setFooterTitle:@"When you're done, press <<Sign Up>>" forSection:0];

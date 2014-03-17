@@ -22,19 +22,19 @@
 //  SOFTWARE.
 
 #import "UITextView+BPForms.h"
-#import "BPFormMultiLineInputCell.h"
+#import "BPFormInputCell.h"
 
 
 @implementation UITextView (BPForms)
 
-- (BPFormMultiLineInputCell *)containerInputCell {
+- (BPFormInputCell *)containerInputCell {
     UIView *view = self;
     while ((view = view.superview)) {
-        if ([view isKindOfClass:[BPFormCell class]]) {
+        if ([view isKindOfClass:[BPFormInputCell class]]) {
             break;
         }
     }
-    return (BPFormMultiLineInputCell *)view;
+    return (BPFormInputCell *)view;
 }
 
 - (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds {

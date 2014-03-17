@@ -1,5 +1,5 @@
 //
-//  BPFormInfoCell.h
+//  UITextView+BPForms.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,14 +21,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+@class BPFormInputCell;
 
-#import "BPFormCell.h"
+
+@interface UITextView (BPForms)
 
 /**
- *  Represents the info cell that describes the main form cells. Each cell has an info cell associated that may be visibile or not
+ *  Retrieve the input cell containing the current text field
+ *
+ *  @return the instance of the BPFormInputCell or nil
  */
-@interface BPFormInfoCell : BPFormCell
+- (BPFormInputCell *)containerInputCell;
 
-@property (nonatomic, strong) UILabel *label;
+/**
+ *  Adds an X offset to bounds. Used by `textRectForBounds` and `editingRectForBounds` methods.
+ *  The purpose is to avoid text values starting right from the edge.
+ *
+ *  @param xOffset  x offset in pixels
+ *  @param inBounds the input bounds
+ *
+ *  @return the output bounds
+ */
+- (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds;
+
 
 @end

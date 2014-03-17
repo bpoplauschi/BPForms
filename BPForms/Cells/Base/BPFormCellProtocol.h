@@ -1,5 +1,5 @@
 //
-//  BPFormMultiLineFloatLabelInputCell.m
+//  BPFormCellProtocol.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,28 +21,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#import <Foundation/Foundation.h>
 
-#import "BPFormMultiLineFloatLabelInputCell.h"
-#import "BPFormFloatLabelTextView.h"
-#import "BPAppearance.h"
+@protocol BPFormCellProtocol <NSObject>
 
-@implementation BPFormMultiLineFloatLabelInputCell
+@required
 
-+ (Class)textViewClass {
-    return [BPFormFloatLabelTextView class];
-}
+/**
+ *  Getter and setter for cell custom height
+ */
+- (CGFloat)customCellHeight;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        if ([self.textView isKindOfClass:[BPFormFloatLabelTextView class]]) {
-            BPFormFloatLabelTextView *floatLabelTextView = (BPFormFloatLabelTextView *)self.textView;
-            
-            [floatLabelTextView floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
-            [floatLabelTextView floatingLabel].backgroundColor = [UIColor clearColor];
-        }
-    }
-    return self;
-}
+- (void)setCustomCellHeight:(CGFloat)inHeight;
+
+/**
+ *  Calculate the cell height
+ *  If customCellHeight is set, returns that value, otherwise it just measures the size of the cell.
+ *
+ *  @return the cell height
+ */
+- (CGFloat)cellHeight;
 
 @end

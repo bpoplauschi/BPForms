@@ -1,5 +1,5 @@
 //
-//  BPFormMultiLineFloatLabelInputCell.h
+//  BPFormInfoCell.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,9 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#import "BPFormCellProtocol.h"
 
-#import "BPFormMultiLineInputCell.h"
 
-@interface BPFormMultiLineFloatLabelInputCell : BPFormMultiLineInputCell
+/**
+ *  Represents the info cell that describes the main form cells. Each cell has an info cell associated that may be visibile or not
+ */
+@interface BPFormInfoCell : UITableViewCell <BPFormCellProtocol>
+
+@property (nonatomic, strong) UILabel *label;
+
+@property (nonatomic, assign) CGFloat customCellHeight;             // set this to use any height for the cell
 
 @end

@@ -26,7 +26,6 @@
 #import "BPAppearance.h"
 #import "BPFormCell.h"
 #import "BPFormInputCell.h"
-#import "BPFormMultiLineInputCell.h"
 #import "BPFormTextField.h"
 #import "BPFormInfoCell.h"
 #import <Masonry.h>
@@ -164,7 +163,9 @@
         BPFormCell *cell = nil;
         if (indexPath.row < sectionCells.count) {
             cell = self.formCells[indexPath.section][indexPath.row];
-            [cell refreshMandatoryState];
+            if ([cell isKindOfClass:[BPFormCell class]]) {
+                [cell refreshMandatoryState];
+            }
         }
         return cell;
     }
@@ -319,7 +320,7 @@
 
 #pragma mark - UITextViewDelegate
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    BPFormInputCell *cell = [textView containerInputCell];
     if (!cell) {
         return;
     }
@@ -333,7 +334,7 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    BPFormInputCell *cell = [textView containerInputCell];
     if (!cell) {
         return;
     }
@@ -353,7 +354,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     BOOL shouldChange = YES;
-    BPFormMultiLineInputCell *cell = [textView containerInputCell];
+    BPFormInputCell *cell = [textView containerInputCell];
     
     if (!cell) {
         return YES;
@@ -438,7 +439,7 @@
     }
 }
 
-- (void)updateInfoCellBelowMultiLineInputCell:(BPFormMultiLineInputCell *)inInputCell {
+- (void)updateInfoCellBelowMultiLineInputCell:(BPFormInputCell *)inInputCell {
     if (inInputCell.shouldShowInfoCell /*&& !inInputCell.textView.editing*/) {
         [self showInfoCellBelowInputCell:inInputCell];
     } else {
