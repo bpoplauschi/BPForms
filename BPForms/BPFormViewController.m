@@ -81,8 +81,8 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHide:)
-                                                 name:UIKeyboardDidHideNotification
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
 }
 
@@ -103,7 +103,7 @@
     }];
 }
 
-- (void)keyboardDidHide:(NSNotification *)inNotification {
+- (void)keyboardWillHide:(NSNotification *)inNotification {
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(self.view.mas_height);
     }];
