@@ -45,7 +45,7 @@
         }];
         
         [self.validationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.textView.mas_right).with.offset(-20).priorityHigh();
+            make.left.equalTo(self.textView.mas_right).priorityHigh();
             make.centerY.equalTo(self.textView.mas_centerY).priorityHigh();
         }];
     }
