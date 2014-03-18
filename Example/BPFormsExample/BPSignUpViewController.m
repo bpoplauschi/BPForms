@@ -44,10 +44,7 @@
     emailCell.textField.delegate = self;
     emailCell.customCellHeight = 50.0f;
     emailCell.mandatory = YES;
-    emailCell.shouldChangeTextBlock =
-        BPTextFieldValidateBlockWithPatternAndMessage(
-            @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
-            @"The email should look like name@provider.domain");
+    emailCell.shouldChangeTextBlock = BPValidateBlockWithPatternAndMessage(@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", @"The email should look like name@provider.domain");
     
     BPFormFloatInputTextFieldCell *passwordCell = [[BPFormFloatInputTextFieldCell alloc] init];
     passwordCell.textField.placeholder = @"Password";

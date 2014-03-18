@@ -30,7 +30,7 @@
 typedef void (^BPFormInputCellEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
 typedef BOOL (^BPFormInputCellShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
 
-BPFormInputCellShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
+BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
 
 
 /**

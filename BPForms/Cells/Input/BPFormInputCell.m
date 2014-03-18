@@ -27,7 +27,7 @@
 #import "BPAppearance.h"
 #import <Masonry.h>
 
-BPFormInputCellShouldEditBlock BPTextFieldValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message) {
+BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message) {
     return ^BOOL(BPFormInputCell *inCell, NSString *inText) {
         NSString *emailRegEx = pattern;
         
