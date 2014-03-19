@@ -23,9 +23,9 @@
 
 
 typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
-	BPFormKeyboardModeAuto		= -1,
-	BPFormKeyboardModeDontMove	= 0,
-    BPFormKeyboardModeMove		= 1
+	BPFormKeyboardModeAuto      = -1,
+	BPFormKeyboardModeDontMove  = 0,
+    BPFormKeyboardModeMove      = 1
 };
 
 /**
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
 /**
  *  Set this to manually specify if the form should try to adjust it's size for the keyboard.
  *	
- *	By default the form will check if it is in a popover, and let the popover adjust it's size instead of the form view itself.
+ *  By default the form will check if it is in a popover, and let the popover adjust it's size instead of the form view itself.
  */
 @property (nonatomic) BPFormKeyboardMode keyboardMode;
 

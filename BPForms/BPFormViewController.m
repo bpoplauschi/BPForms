@@ -62,7 +62,7 @@
 }
 
 - (void)setupFormVC {
-	_keyboardMode = BPFormKeyboardModeAuto;
+    self.keyboardMode = BPFormKeyboardModeAuto;
 	
     self.sectionHeaderTitles = [NSMutableDictionary dictionary];
     self.sectionFooterTitles = [NSMutableDictionary dictionary];
@@ -94,22 +94,27 @@
 }
 
 - (BOOL)shouldMoveForKeyboard {
-	BOOL result = YES;
-	
-	if (self.keyboardMode == BPFormKeyboardModeMove) {
-		result = YES;
-	} else if (self.keyboardMode == BPFormKeyboardModeDontMove) {
-		result = NO;
-	} else if (self.keyboardMode == BPFormKeyboardModeAuto) {
-		result = YES;
-		for (UIView *v = self.tableView; v.superview != nil; v=v.superview) {
-			if ([v isKindOfClass:NSClassFromString(@"UIPopoverView")] || [v isKindOfClass:NSClassFromString(@"_UIPopoverView")]) {
-				result = NO;
-				break;
-			}
-		}
-	}
-	
+    BOOL result = YES;
+    
+    switch (self.keyboardMode) {
+        case BPFormKeyboardModeMove:
+            result = YES;
+            break;
+        case BPFormKeyboardModeDontMove:
+            result = NO;
+            break;
+        case BPFormKeyboardModeAuto:
+        default:
+            result = YES;
+            for (UIView *v = self.tableView; v.superview != nil; v=v.superview) {
+                if ([v isKindOfClass:NSClassFromString(@"UIPopoverView")] || [v isKindOfClass:NSClassFromString(@"_UIPopoverView")]) {
+                    result = NO;
+                    break;
+                }
+            }
+            break;
+    }
+    
 	return result;
 }
 
