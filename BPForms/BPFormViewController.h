@@ -22,6 +22,12 @@
 //  SOFTWARE.
 
 
+typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
+	BPFormKeyboardModeAuto		= -1,
+	BPFormKeyboardModeDontMove	= 0,
+    BPFormKeyboardModeMove		= 1
+};
+
 /**
  *  Main class, represents the form controller
  */
@@ -46,6 +52,13 @@
  *  Set this to use a custom height for footers
  */
 @property (nonatomic, assign) CGFloat customSectionFooterHeight;
+
+/**
+ *  Set this to manually specify if the form should try to adjust it's size for the keyboard.
+ *	
+ *	By default the form will check if it is in a popover, and let the popover adjust it's size instead of the form view itself.
+ */
+@property (nonatomic) BPFormKeyboardMode keyboardMode;
 
 /**
  *  Set the header title for a specified section
