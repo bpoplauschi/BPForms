@@ -79,4 +79,12 @@
     }];
 }
 
+- (void)setCustomCellHeight:(CGFloat)customCellHeight {
+    [super setCustomCellHeight:customCellHeight];
+    CGFloat newCellHeight = self.customCellHeight;
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(newCellHeight));
+    }];
+}
+
 @end
