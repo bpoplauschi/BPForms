@@ -62,6 +62,8 @@
 }
 
 - (void)setupFormVC {
+	_keyboardMode = BPFormKeyboardModeAuto;
+	
     self.sectionHeaderTitles = [NSMutableDictionary dictionary];
     self.sectionFooterTitles = [NSMutableDictionary dictionary];
     
@@ -91,23 +93,47 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (BOOL)shouldMoveForKeyboard {
+	BOOL result = YES;
+	
+	if (self.keyboardMode == BPFormKeyboardModeMove) {
+		result = YES;
+	} else if (self.keyboardMode == BPFormKeyboardModeDontMove) {
+		result = NO;
+	} else if (self.keyboardMode == BPFormKeyboardModeAuto) {
+		result = YES;
+		for (UIView *v = self.tableView; v.superview != nil; v=v.superview) {
+			if ([v isKindOfClass:NSClassFromString(@"UIPopoverView")] || [v isKindOfClass:NSClassFromString(@"_UIPopoverView")]) {
+				result = NO;
+				break;
+			}
+		}
+	}
+	
+	return result;
+}
+
 - (void)keyboardDidShow:(NSNotification *)inNotification {
-    // make the tableview fit the visible area of the screen, so it's scrollable to all the cells
-    // note: for landscape, the sizes are switched, so we need to use width as height
-    
-    CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
-    
-    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.view.mas_height).with.offset(-keyboardHeight);
-    }];
+	if ([self shouldMoveForKeyboard]) {
+		// make the tableview fit the visible area of the screen, so it's scrollable to all the cells
+		// note: for landscape, the sizes are switched, so we need to use width as height
+		
+		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+		
+		CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
+		
+		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+			make.height.equalTo(self.view.mas_height).with.offset(-keyboardHeight);
+		}];
+	}
 }
 
 - (void)keyboardWillHide:(NSNotification *)inNotification {
-    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.view.mas_height);
-    }];
+	if ([self shouldMoveForKeyboard]) {
+		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+			make.height.equalTo(self.view.mas_height);
+		}];
+	}
 }
 
 - (void)setupTableView {
