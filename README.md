@@ -44,7 +44,7 @@ pod 'BPForms'
 #### Class Diagram
 
 <p align="left" >
-  <img src="BPFormsSimpleClassDiagram.jpeg" title="BPForms class diagram" width=600>
+  <img src="BPFormsSimpleClassDiagram.jpeg" title="BPForms class diagram" width=800>
 </p>
 
 ## Dependencies
