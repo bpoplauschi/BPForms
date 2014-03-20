@@ -41,6 +41,12 @@ pod 'BPForms'
 #### Appearance
 - ```BPAppearance```
 
+#### Class Diagram
+
+<p align="left" >
+  <img src="BPFormsSimpleClassDiagram.jpeg" title="BPForms class diagram" width=600>
+</p>
+
 ## Dependencies
 - [Masonry](https://github.com/cloudkite/Masonry)
 - [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField)
