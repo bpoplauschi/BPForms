@@ -43,6 +43,8 @@ pod 'BPForms'
 
 #### Class Diagram
 
+Check the [detailed class diagram](BPFormsDetailedClassDiagram.jpeg).
+
 <p align="left" >
   <img src="BPFormsSimpleClassDiagram.jpeg" title="BPForms class diagram" width=800>
 </p>
