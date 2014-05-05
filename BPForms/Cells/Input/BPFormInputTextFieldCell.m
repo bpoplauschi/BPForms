@@ -28,7 +28,7 @@
 
 @implementation BPFormInputTextFieldCell
 
-+ (Class)textFieldClass {
++ (Class)textInputClass {
     return [BPFormTextField class];
 }
 
@@ -52,12 +52,12 @@
 }
 
 - (void)setupTextField {
-    Class textFieldClass = [[self class] textFieldClass];
-    if (!textFieldClass) {
-        textFieldClass = [BPFormTextField class];
+    Class textInputClass = [[self class] textInputClass];
+    if (!textInputClass) {
+        textInputClass = [BPFormTextField class];
     }
     
-    self.textField = [[textFieldClass alloc] init];
+    self.textField = [[textInputClass alloc] init];
     
     self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
