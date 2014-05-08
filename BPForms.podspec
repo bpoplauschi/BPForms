@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
   s.summary  = 'Dynamic forms for iPhone/iPad - iOS 6, 7 and later.'
   s.homepage = 'https://github.com/bpoplauschi/BPForms'
-  s.author   = { 'Bogdan Poplauschi' => 'bpoplauschi@groupon.com' }
+  s.author   = { 'Bogdan Poplauschi' => 'bpoplauschi@gmail.com' }
   s.source   = { :git => 'https://github.com/bpoplauschi/BPForms.git',
                  :tag => "#{s.version}" }
 
