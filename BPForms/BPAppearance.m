@@ -48,11 +48,11 @@
     
     self.inputCellBackgroundColor           = [UIColor whiteColor];
     self.inputCellTextFieldTextColor        = [UIColor blackColor];
-    self.inputCellTextFieldBackgroundColor  = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
-    self.inputCellTextFieldBorderColor      = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+    self.inputCellTextFieldBackgroundColor  = [UIColor colorWithRed:0.93f green:0.93f blue:0.93f alpha:1.0f];
+    self.inputCellTextFieldBorderColor      = [UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.0f];
     
     self.infoCellBackgroundColor            = [UIColor whiteColor];
-    self.infoCellLabelTextColor             = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:1.0];
+    self.infoCellLabelTextColor             = [UIColor colorWithRed:0.25f green:0.25f blue:0.25f alpha:1.0f];
     self.infoCellLabelBackgroundColor       = [UIColor clearColor];
     
     self.buttonCellBackgroundColor          = [UIColor whiteColor];
