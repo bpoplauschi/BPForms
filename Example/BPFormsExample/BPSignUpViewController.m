@@ -37,20 +37,26 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    BOOL isIOS7orLater = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);
+    
+    Class inputTextFieldClass = isIOS7orLater ? [BPFormFloatInputTextFieldCell class] : [BPFormInputTextFieldCell class];
+    Class inputTextViewClass = isIOS7orLater ? [BPFormFloatInputTextViewCell class] : [BPFormInputTextViewCell class];
+    
     self.title = @"Sign Up";
     
-    BPFormFloatInputTextFieldCell *emailCell = [[BPFormFloatInputTextFieldCell alloc] init];
+    BPFormInputTextFieldCell *emailCell = [[inputTextFieldClass alloc] init];
     emailCell.textField.placeholder = @"Email";
     emailCell.textField.delegate = self;
-    emailCell.customCellHeight = 50.0f;
+    emailCell.customCellHeight = 40.0f;
     emailCell.mandatory = YES;
     emailCell.shouldChangeTextBlock = BPValidateBlockWithPatternAndMessage(@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", @"The email should look like name@provider.domain");
     
-    BPFormFloatInputTextFieldCell *passwordCell = [[BPFormFloatInputTextFieldCell alloc] init];
+    BPFormInputTextFieldCell *passwordCell = [[inputTextFieldClass alloc] init];
     passwordCell.textField.placeholder = @"Password";
     passwordCell.textField.delegate = self;
     passwordCell.textField.secureTextEntry = YES;
-    passwordCell.customCellHeight = 50.0f;
+    passwordCell.spaceToNextCell = 2.0f;
+    passwordCell.customCellHeight = 40.0f;
     passwordCell.mandatory = YES;
     passwordCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
         if (inText.length >= 6) {
@@ -64,11 +70,11 @@
         return YES;
     };
 
-    BPFormFloatInputTextFieldCell *password2Cell = [[BPFormFloatInputTextFieldCell alloc] init];
+    BPFormInputTextFieldCell *password2Cell = [[inputTextFieldClass alloc] init];
     password2Cell.textField.placeholder = @"Verify Password";
     password2Cell.textField.delegate = self;
     password2Cell.textField.secureTextEntry = YES;
-    password2Cell.customCellHeight = 50.0f;
+    password2Cell.customCellHeight = 40.0f;
     password2Cell.mandatory = YES;
     password2Cell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
         if (inText.length && [inText isEqualToString:passwordCell.textField.text]) {
@@ -82,22 +88,26 @@
         return YES;
     };
     
-    BPFormFloatInputTextFieldCell *nameCell = [[BPFormFloatInputTextFieldCell alloc] init];
+    BPFormInputTextFieldCell *nameCell = [[inputTextFieldClass alloc] init];
     nameCell.textField.placeholder = @"Name";
     nameCell.textField.delegate = self;
-    nameCell.customCellHeight = 50.0f;
+    nameCell.customCellHeight = 40.0f;
     
-    BPFormFloatInputTextFieldCell *phoneCell = [[BPFormFloatInputTextFieldCell alloc] init];
+    BPFormInputTextFieldCell *phoneCell = [[inputTextFieldClass alloc] init];
     phoneCell.textField.placeholder = @"Phone";
     phoneCell.textField.delegate = self;
     phoneCell.textField.keyboardType = UIKeyboardTypePhonePad;
-    phoneCell.customCellHeight = 50.0f;
+    phoneCell.customCellHeight = 40.0f;
     
-    BPFormFloatInputTextViewCell *descriptionCell = [[BPFormFloatInputTextViewCell alloc]  init];
+    BPFormInputTextViewCell *descriptionCell = [[inputTextViewClass alloc]  init];
     descriptionCell.textView.delegate = self;
-    descriptionCell.customCellHeight = 100.0f;
+    descriptionCell.customCellHeight = 90.0f;
+    descriptionCell.customContentWidth = 310.0f;
+//    descriptionCell.customContentHeight = 60.0f;
     descriptionCell.mandatory = NO;
-    [descriptionCell setPlaceholder:@"Description"];
+    if (isIOS7orLater) {
+        [(BPFormFloatInputTextViewCell *)descriptionCell setPlaceholder:@"Description"];
+    }
     descriptionCell.shouldChangeTextBlock = ^BOOL(BPFormInputCell *inCell, NSString *inText) {
         if (inText.length) {
             inCell.validationState = BPFormValidationStateValid;
@@ -115,6 +125,7 @@
     [signUpCell.button setTitle:@"Sign Up" forState:UIControlStateNormal];
     signUpCell.button.layer.cornerRadius = 4.0;
     signUpCell.button.layer.masksToBounds = YES;
+    signUpCell.customContentWidth = 220;
     signUpCell.buttonActionBlock = ^(void){
         NSLog(@"Button pressed");
         
