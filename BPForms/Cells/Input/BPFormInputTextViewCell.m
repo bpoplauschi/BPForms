@@ -36,6 +36,7 @@
 
 @implementation BPFormInputTextViewCell
 
+// auto-synthesize doesn't work here since the properties are defined in a base class (BPFormCell)
 @synthesize spaceToNextCell = _spaceToNextCell;
 @synthesize customContentHeight = _customContentHeight;
 @synthesize customContentWidth = _customContentWidth;
