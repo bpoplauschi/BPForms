@@ -27,22 +27,25 @@
 #import <Masonry.h>
 
 
+@interface BPFormButtonCell ()
+
+@property (nonatomic, strong) MASConstraint *widthConstraint;
+@property (nonatomic, strong) MASConstraint *heightConstraint;
+
+@end
+
+
 @implementation BPFormButtonCell
 
-- (id)initWithButtonHeight:(CGFloat)inButtonHeight {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    if (self) {
-        [self setupCell];
-        [self setupButtonWithHeight:inButtonHeight];
-    }
-    return self;
-}
+@synthesize spaceToNextCell = _spaceToNextCell;
+@synthesize customContentHeight = _customContentHeight;
+@synthesize customContentWidth = _customContentWidth;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self setupCell];
-        [self setupButtonWithHeight:[BPAppearance sharedInstance].elementHeight];
+        [self setupButton];
     }
     return self;
 }
@@ -52,25 +55,62 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)setupButtonWithHeight:(CGFloat)inHeight {
+- (void)setupButton {
     self.button = [UIButton buttonWithType:UIButtonTypeCustom];
     self.button.backgroundColor = [UIColor clearColor];
     [self.button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.button];
     
-    self.button.frame = CGRectMake(round((self.frame.size.width - self.frame.origin.x - [BPAppearance sharedInstance].elementWidth) / 2), self.frame.origin.y, [BPAppearance sharedInstance].elementWidth, [BPAppearance sharedInstance].elementHeight);
+    [self.widthConstraint uninstall];
+    [self.heightConstraint uninstall];
     
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@([BPAppearance sharedInstance].elementWidth));
+        self.widthConstraint = make.width.equalTo(self.mas_width).offset(-30);
         make.centerX.equalTo(self.mas_centerX);
         make.top.equalTo(self.mas_top);
-        make.height.equalTo(@(inHeight));
+        self.heightConstraint = make.height.equalTo(self.mas_height).offset(-self.spaceToNextCell);
     }];
 }
 
 - (void)buttonPressed:(id)sender {
     if (self.buttonActionBlock) {
         self.buttonActionBlock();
+    }
+}
+
+- (void)setSpaceToNextCell:(CGFloat)inSpaceToNextCell {
+    if (inSpaceToNextCell != _spaceToNextCell) {
+        _spaceToNextCell = inSpaceToNextCell;
+        
+        if (self.customContentHeight == 0) {
+            
+            [self.heightConstraint uninstall];
+            [self.button mas_updateConstraints:^(MASConstraintMaker *make) {
+                self.heightConstraint = make.height.equalTo(self.mas_height).offset(-inSpaceToNextCell);
+            }];
+        }
+    }
+}
+
+- (void)setCustomContentHeight:(CGFloat)inCustomContentHeight {
+    if (inCustomContentHeight != _customContentHeight) {
+        _customContentHeight = inCustomContentHeight;
+        
+        [self.heightConstraint uninstall];
+        [self.button mas_updateConstraints:^(MASConstraintMaker *make) {
+            self.heightConstraint = make.height.equalTo(@(inCustomContentHeight));
+        }];
+    }
+}
+
+- (void)setCustomContentWidth:(CGFloat)inCustomContentWidth {
+    if (inCustomContentWidth != _customContentWidth) {
+        _customContentWidth = inCustomContentWidth;
+        
+        [self.widthConstraint uninstall];
+        [self.button mas_updateConstraints:^(MASConstraintMaker *make) {
+            self.widthConstraint = make.width.equalTo(@(inCustomContentWidth));
+        }];
     }
 }
 

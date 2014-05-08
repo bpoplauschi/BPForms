@@ -56,11 +56,7 @@
 
 
 // -- Sizes --
-
-// Reffer to elements such as textfield from input cells, labels from info cells, buttons, ...
-@property (nonatomic, assign) CGFloat elementWidth;                         // default is 290
-@property (nonatomic, assign) CGFloat elementHeight;                        // default is 44
-
 @property (nonatomic, assign) CGFloat infoCellHeight;                       // default is 16
+@property (nonatomic, assign) CGFloat spaceBetweenCells;                    // default is 8
 
 @end

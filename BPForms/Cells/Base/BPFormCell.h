@@ -41,6 +41,9 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
 @property (nonatomic, assign) BPFormValidationState validationState;
 
 @property (nonatomic, assign) CGFloat               customCellHeight;   // set this to use any height for the cell
+@property (nonatomic, assign) CGFloat               customContentHeight;// set this to override the content height (aka height of the content elements)
+@property (nonatomic, assign) CGFloat               customContentWidth; // set this to override the content width (aka width of the content elements)
+@property (nonatomic, assign) CGFloat               spaceToNextCell;    // space till next cell. Default is BPAppearance.spaceBetweenCells
 
 @property (nonatomic, assign) BOOL                  mandatory;          // if set to YES, an icon will appear next the the cell indicating this is mandatory
 

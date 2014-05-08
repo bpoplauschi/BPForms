@@ -26,8 +26,19 @@
 #import "BPAppearance.h"
 #import "BPFormTextView.h"
 
+@interface BPFormInputTextViewCell ()
+
+@property (nonatomic, strong) MASConstraint *widthConstraint;
+@property (nonatomic, strong) MASConstraint *heightConstraint;
+
+@end
+
 
 @implementation BPFormInputTextViewCell
+
+@synthesize spaceToNextCell = _spaceToNextCell;
+@synthesize customContentHeight = _customContentHeight;
+@synthesize customContentWidth = _customContentWidth;
 
 + (Class)textInputClass {
     return [BPFormTextView class];
@@ -71,12 +82,50 @@
     
     [self.contentView addSubview:self.textView];
     
-    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@([BPAppearance sharedInstance].elementWidth));
+    [self.widthConstraint uninstall];
+    [self.heightConstraint uninstall];
+    
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        self.widthConstraint = make.width.equalTo(self.mas_width).offset(-30);
         make.centerX.equalTo(self.mas_centerX);
         make.top.equalTo(self.mas_top);
-        make.height.equalTo(@([BPAppearance sharedInstance].elementHeight * 2));
+        self.heightConstraint = make.height.equalTo(self.mas_height).offset(-self.spaceToNextCell);
     }];
+}
+
+- (void)setSpaceToNextCell:(CGFloat)inSpaceToNextCell {
+    if (inSpaceToNextCell != _spaceToNextCell) {
+        _spaceToNextCell = inSpaceToNextCell;
+        
+        if (self.customContentHeight == 0) {
+            [self.heightConstraint uninstall];
+            [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+                self.heightConstraint = make.height.equalTo(self.mas_height).offset(-inSpaceToNextCell);
+            }];
+        }
+    }
+}
+
+- (void)setCustomContentHeight:(CGFloat)inCustomContentHeight {
+    if (inCustomContentHeight != _customContentHeight) {
+        _customContentHeight = inCustomContentHeight;
+        
+        [self.heightConstraint uninstall];
+        [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+            self.heightConstraint = make.height.equalTo(@(inCustomContentHeight));
+        }];
+    }
+}
+
+- (void)setCustomContentWidth:(CGFloat)inCustomContentWidth {
+    if (inCustomContentWidth != _customContentWidth) {
+        _customContentWidth = inCustomContentWidth;
+        
+        [self.widthConstraint uninstall];
+        [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+            self.widthConstraint = make.width.equalTo(@(inCustomContentWidth));
+        }];
+    }
 }
 
 @end

@@ -64,9 +64,8 @@
     self.infoCellLabelFont                  = [UIFont systemFontOfSize:10.0f];
     self.headerFooterLabelFont              = [UIFont systemFontOfSize:12.0f];
     
-    self.elementWidth   = 290;
-    self.elementHeight  = 44;
-    self.infoCellHeight = 16;
+    self.infoCellHeight = 16.0f;
+    self.spaceBetweenCells = 8.0f;
 }
 
 @end

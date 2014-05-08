@@ -37,6 +37,4 @@ typedef void(^ButtonPressedBlock)(void);
 
 @property (nonatomic, copy) ButtonPressedBlock buttonActionBlock;   // block called when the button was pressed
 
-- (id)initWithButtonHeight:(CGFloat)inButtonHeight;
-
 @end

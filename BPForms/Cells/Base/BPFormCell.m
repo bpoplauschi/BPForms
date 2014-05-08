@@ -25,6 +25,7 @@
 #import "BPFormCell.h"
 #import <Masonry.h>
 #import "BPFormInfoCell.h"
+#import "BPAppearance.h"
 
 
 // static vars that hold image names, if those were set. Used to override the default images
@@ -51,6 +52,7 @@ static NSString *BPInvalidImageName = nil;
         self.shouldShowInfoCell = NO;
         self.shouldShowValidation = YES;
         self.validationState = BPFormValidationStateNone;
+        self.spaceToNextCell = [BPAppearance sharedInstance].spaceBetweenCells;
         
         [self setupMandatoryImageView];
         [self setupValidationImageView];
@@ -60,10 +62,8 @@ static NSString *BPInvalidImageName = nil;
 }
 
 - (CGFloat)cellHeight {
-    if (self.customCellHeight) {
-        return self.customCellHeight;
-    }
-    return self.bounds.size.height;
+    CGFloat cellHeight = (self.customCellHeight ?: self.bounds.size.height) + self.spaceToNextCell;
+    return cellHeight;
 }
 
 - (void)setupMandatoryImageView {
