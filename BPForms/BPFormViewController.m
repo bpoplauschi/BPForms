@@ -200,7 +200,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.formCells && (section < self.formCells.count) ) {
-        return [self.formCells[section] count];
+        return [((NSArray *)self.formCells[section]) count];
     }
     return 0;
 }
