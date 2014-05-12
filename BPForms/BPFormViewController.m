@@ -126,18 +126,18 @@
 		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 		
 		CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
-		
-		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-			make.height.equalTo(self.view.mas_height).with.offset(-keyboardHeight);
-		}];
+
+		UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, keyboardHeight, 0);
+		self.tableView.contentInset = insets;
+		self.tableView.scrollIndicatorInsets = insets;
 	}
 }
 
 - (void)keyboardWillHide:(NSNotification *)inNotification {
 	if ([self shouldMoveForKeyboard]) {
-		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-			make.height.equalTo(self.view.mas_height);
-		}];
+		UIEdgeInsets insets = UIEdgeInsetsZero;
+		self.tableView.contentInset = insets;
+		self.tableView.scrollIndicatorInsets = insets;
 	}
 }
 
