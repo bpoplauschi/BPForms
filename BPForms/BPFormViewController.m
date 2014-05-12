@@ -35,6 +35,35 @@
 #import "BPFormInputTextViewCell.h"
 
 
+// borrowed from FXForms
+static UIView *BPFormsFirstResponder(UIView *view) {
+
+	if ([view isFirstResponder]) {
+		return view;
+	}
+
+	for (UIView *subview in view.subviews) {
+		UIView *responder = BPFormsFirstResponder(subview);
+		if (responder)
+		{
+			return responder;
+		}
+	}
+
+	return nil;
+}
+
+// borrowed from FXForms
+static UITableViewCell *BPFormsCellContainingView(UIView *view) {
+
+	if (view == nil || [view isKindOfClass:[UITableViewCell class]]) 	{
+		return (UITableViewCell *)view;
+	}
+
+	return BPFormsCellContainingView(view.superview);
+}
+
+
 @interface BPFormViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *sectionHeaderTitles; // dictionary holding (section, title) pairs
@@ -79,8 +108,8 @@
     
     // need to react to keyboard, in detail make the table view visible at all time, so scrolling is available when the keyboard is on
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -118,7 +147,7 @@
 	return result;
 }
 
-- (void)keyboardDidShow:(NSNotification *)inNotification {
+- (void)keyboardWillShow:(NSNotification *)inNotification {
 	if ([self shouldMoveForKeyboard]) {
 		// make the tableview fit the visible area of the screen, so it's scrollable to all the cells
 		// note: for landscape, the sizes are switched, so we need to use width as height
@@ -126,10 +155,15 @@
 		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 		
 		CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
+		CGFloat padding = 20;
 
-		UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, keyboardHeight, 0);
+		UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, keyboardHeight + padding, 0);
 		self.tableView.contentInset = insets;
 		self.tableView.scrollIndicatorInsets = insets;
+
+		UITableViewCell *cell = BPFormsCellContainingView(BPFormsFirstResponder(self.tableView));
+		NSIndexPath *selectedRow = [self.tableView indexPathForCell:cell];
+		[self.tableView scrollToRowAtIndexPath:selectedRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	}
 }
 
