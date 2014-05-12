@@ -14,5 +14,4 @@ script:
     - pod lib lint
     - cd Example
     - pod update
-    - xctool -project Xcode/ContextFilter/ContextFilter.xcodeproj -scheme 'ContextFilter' 
     - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator clean build | xcpretty -c; exit ${PIPESTATUS[0]}
