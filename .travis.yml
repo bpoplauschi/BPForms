@@ -1,0 +1,18 @@
+language: objective-c
+
+before_install:
+    - export LANG=en_US.UTF-8
+    - env
+    - locale
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+    - pod --version
+    - pod setup --silent
+    - pod repo update --silent
+
+script:
+    - pod lib lint
+    - cd Example
+    - pod update
+    - xctool -project Xcode/ContextFilter/ContextFilter.xcodeproj -scheme 'ContextFilter' 
+    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator clean build | xcpretty -c; exit ${PIPESTATUS[0]}
