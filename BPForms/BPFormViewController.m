@@ -135,9 +135,11 @@
 
 - (void)keyboardWillHide:(NSNotification *)inNotification {
 	if ([self shouldMoveForKeyboard]) {
-		UIEdgeInsets insets = UIEdgeInsetsZero;
-		self.tableView.contentInset = insets;
-		self.tableView.scrollIndicatorInsets = insets;
+		[UIView animateWithDuration:0.25 animations:^{
+			UIEdgeInsets insets = UIEdgeInsetsZero;
+			self.tableView.contentInset = insets;
+			self.tableView.scrollIndicatorInsets = insets;
+		}];
 	}
 }
 
