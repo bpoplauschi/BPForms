@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
     BPFormKeyboardModeMove      = 1
 };
 
+@class BPFormCell;
+
 /**
  *  Main class, represents the form controller
  */
@@ -82,5 +84,12 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
  *  @return YES if all the cells are valid
  */
 - (BOOL)allCellsAreValid;
+
+/**
+ *  Will return the cell that contains the UI element that is first responder or nil, if none found
+ *
+ *  @return the cell (or nil)
+ */
+- (BPFormCell *)cellContainingFirstResponder;
 
 @end

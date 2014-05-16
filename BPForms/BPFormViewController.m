@@ -126,17 +126,29 @@
 		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 		
 		CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
-		
-		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-			make.height.equalTo(self.view.mas_height).with.offset(-keyboardHeight);
-		}];
+        
+        CGFloat padding = 20;
+        // get the existing inset and make the bottom = keyboard height + a padding
+        // note that insets.top is 0 (iOS6) and 64 (iOS7)
+        UIEdgeInsets insets = self.tableView.contentInset;
+        insets.bottom = keyboardHeight + padding;
+		self.tableView.contentInset = insets;
+		self.tableView.scrollIndicatorInsets = insets;
+        
+        BPFormCell *firstResponderCell = [self cellContainingFirstResponder];
+		NSIndexPath *selectedRow = [self.tableView indexPathForCell:firstResponderCell];
+		[self.tableView scrollToRowAtIndexPath:selectedRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	}
 }
 
 - (void)keyboardWillHide:(NSNotification *)inNotification {
 	if ([self shouldMoveForKeyboard]) {
-		[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-			make.height.equalTo(self.view.mas_height);
+		[UIView animateWithDuration:0.25 animations:^{
+            // get the existing inset and reset the bottom to 0
+            UIEdgeInsets insets = self.tableView.contentInset;
+            insets.bottom = 0;
+			self.tableView.contentInset = insets;
+			self.tableView.scrollIndicatorInsets = insets;
 		}];
 	}
 }
@@ -188,6 +200,27 @@
     }
     
     return valid;
+}
+
+- (BPFormCell *)cellContainingFirstResponder {
+    for (UITableViewCell *cell in self.tableView.visibleCells) {
+        if ([cell isKindOfClass:[BPFormCell class]]) {
+            BPFormCell *formCell = (BPFormCell *)cell;
+            // first we check the contentView subviews
+            for (UIView *subview in formCell.contentView.subviews) {
+                if ([subview isFirstResponder]) {
+                    return formCell;
+                }
+            }
+            // fallback to self.subviews
+            for (UIView *subview in formCell.subviews) {
+                if ([subview isFirstResponder]) {
+                    return formCell;
+                }
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark - UITableViewDataSource
