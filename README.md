@@ -10,6 +10,9 @@ Now integrated with the well known [JVFloatLabeledTextField](https://github.com/
   <img src="BPForms.gif" title="BPForms demo" float=right width=300>
 </p>
 
+### Forms design
+- check out a [good article about forms design](http://www.nngroup.com/articles/form-design-placeholders/).
+
 ## How to get started
 
 ### install via CocoaPods
