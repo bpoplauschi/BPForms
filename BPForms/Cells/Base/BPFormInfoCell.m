@@ -42,6 +42,7 @@
 - (void)setupCell {
     self.customCellHeight = [BPAppearance sharedInstance].infoCellHeight;
     self.backgroundColor = [BPAppearance sharedInstance].infoCellBackgroundColor;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setupLabel {
