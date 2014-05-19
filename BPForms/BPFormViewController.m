@@ -79,8 +79,8 @@
     
     // need to react to keyboard, in detail make the table view visible at all time, so scrolling is available when the keyboard is on
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -118,7 +118,7 @@
 	return result;
 }
 
-- (void)keyboardDidShow:(NSNotification *)inNotification {
+- (void)keyboardWillShow:(NSNotification *)inNotification {
 	if ([self shouldMoveForKeyboard]) {
 		// make the tableview fit the visible area of the screen, so it's scrollable to all the cells
 		// note: for landscape, the sizes are switched, so we need to use width as height
