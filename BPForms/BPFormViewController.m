@@ -125,7 +125,11 @@
 		
 		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 		
-		CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
+        // the keyboard height is always the smallest one
+        // we used to have CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
+        // but when the app is launched directly in landscape, the interface is UIDeviceInterfaceUnknown
+        
+		CGFloat keyboardHeight = (keyboardSize.width > keyboardSize.height) ? keyboardSize.height : keyboardSize.width;
         
         CGFloat padding = 20;
         // get the existing inset and make the bottom = keyboard height + a padding
