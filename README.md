@@ -1,5 +1,9 @@
 BPForms
 =======
+[![Build Status](http://img.shields.io/travis/bpoplauschi/BPForms/master.svg?style=flat)](https://travis-ci.org/bpoplauschi/BPForms)
+[![Pod Version](http://img.shields.io/cocoapods/v/BPForms.svg?style=flat)](http://cocoadocs.org/docsets/BPForms/)
+[![Pod Platform](http://img.shields.io/cocoapods/p/BPForms.svg?style=flat)](http://cocoadocs.org/docsets/BPForms/)
+[![Pod License](http://img.shields.io/cocoapods/l/BPForms.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Dynamic forms for iPhone/iPad - iOS 6, 7 and later (inspired from [BZGFormViewController](https://github.com/benzguo/BZGFormViewController)).
 
