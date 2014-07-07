@@ -150,11 +150,17 @@
 		[UIView animateWithDuration:0.25 animations:^{
             // get the existing inset and reset the bottom to 0
             UIEdgeInsets insets = self.tableView.contentInset;
-            insets.bottom = 0;
+            insets.bottom = [self bottomInsetWhenKeyboardIsHidden];
 			self.tableView.contentInset = insets;
 			self.tableView.scrollIndicatorInsets = insets;
 		}];
 	}
+}
+
+- (CGFloat)bottomInsetWhenKeyboardIsHidden {
+
+	BOOL isToolBarShowing = self.navigationController.toolbar && !self.navigationController.toolbar.hidden;
+	return isToolBarShowing ? self.navigationController.toolbar.frame.size.height : 0;
 }
 
 - (void)setupTableView {
