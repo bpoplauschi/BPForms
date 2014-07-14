@@ -210,7 +210,11 @@
     for (UITableViewCell *cell in self.tableView.visibleCells) {
         if ([cell isKindOfClass:[BPFormCell class]]) {
             BPFormCell *formCell = (BPFormCell *)cell;
-            // first we check the contentView subviews
+            // first we check the cell itself
+            if ([cell isFirstResponder]) {
+                return formCell;
+            }
+            // then we check the contentView subviews
             for (UIView *subview in formCell.contentView.subviews) {
                 if ([subview isFirstResponder]) {
                     return formCell;
