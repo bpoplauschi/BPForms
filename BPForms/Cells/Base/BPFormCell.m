@@ -51,7 +51,7 @@ static NSString *BPInvalidImageName = nil;
         self.mandatory = NO;
         self.shouldShowInfoCell = NO;
         self.shouldShowValidation = YES;
-        self.validationState = BPFormValidationStateNone;
+        self.validationState = BPFormValidationStateValid;
         self.spaceToNextCell = [BPAppearance sharedInstance].spaceBetweenCells;
         
         [self setupMandatoryImageView];

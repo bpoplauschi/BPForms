@@ -92,12 +92,14 @@
     nameCell.textField.placeholder = @"Name";
     nameCell.textField.delegate = self;
     nameCell.customCellHeight = 40.0f;
+    nameCell.validationState = BPFormValidationStateValid;
     
     BPFormInputTextFieldCell *phoneCell = [[inputTextFieldClass alloc] init];
     phoneCell.textField.placeholder = @"Phone";
     phoneCell.textField.delegate = self;
     phoneCell.textField.keyboardType = UIKeyboardTypePhonePad;
     phoneCell.customCellHeight = 40.0f;
+    phoneCell.validationState = BPFormValidationStateValid;
     
     BPFormInputTextViewCell *descriptionCell = [[inputTextViewClass alloc]  init];
     descriptionCell.textView.delegate = self;
