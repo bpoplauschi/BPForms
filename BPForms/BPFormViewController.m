@@ -196,7 +196,7 @@
     
     for (NSArray *section in self.formCells) {
         for (BPFormCell *cell in section) {
-            if (BPFormValidationStateInvalid == cell.validationState) {
+            if (BPFormValidationStateValid != cell.validationState) {
                 valid = NO;
                 break;
             }
