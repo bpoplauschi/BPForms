@@ -33,7 +33,9 @@ static NSString *BPMandatoryImageName = nil;
 static NSString *BPValidImageName = nil;
 static NSString *BPInvalidImageName = nil;
 
-@implementation BPFormCell
+@implementation BPFormCell {
+    CGFloat _originalHeight;
+}
 
 + (void)setMandatoryImageName:(NSString *)inMandatoryImageName {
     BPMandatoryImageName = inMandatoryImageName;
@@ -62,7 +64,11 @@ static NSString *BPInvalidImageName = nil;
 }
 
 - (CGFloat)cellHeight {
-    CGFloat cellHeight = (self.customCellHeight ?: self.bounds.size.height) + self.spaceToNextCell;
+    if (_originalHeight == 0.0f) {
+        _originalHeight = self.bounds.size.height;
+    }
+
+    CGFloat cellHeight = (self.customCellHeight ?: _originalHeight) + self.spaceToNextCell;
     return cellHeight;
 }
 
