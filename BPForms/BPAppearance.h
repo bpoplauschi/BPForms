@@ -36,12 +36,15 @@
 @property (nonatomic, strong) UIColor *inputCellTextFieldTextColor;         // default is black
 @property (nonatomic, strong) UIColor *inputCellTextFieldBackgroundColor;   // default is (0.93, 0.93, 0.93, 1.0)
 @property (nonatomic, strong) UIColor *inputCellTextFieldBorderColor;       // default is (0.85, 0.85, 0.85, 1.0)
+@property (nonatomic, assign) CGFloat inputCellTextFieldBorderSize;			// default is 0.5
+@property (nonatomic, assign) CGFloat inputCellTextFieldCornerRadius;		// default is 0.0
 
 @property (nonatomic, strong) UIColor *infoCellBackgroundColor;             // default is white
 @property (nonatomic, strong) UIColor *infoCellLabelTextColor;              // default is (0.25, 0.25, 0.25, 1.0)
 @property (nonatomic, strong) UIColor *infoCellLabelBackgroundColor;        // default is clear
 
 @property (nonatomic, strong) UIColor *buttonCellBackgroundColor;           // default is white
+@property (nonatomic, assign) CGFloat buttonCellCornerRadius;				// default is 0.0
 
 @property (nonatomic, strong) UIColor *headerFooterLabelTextColor;          // default is dark-gray
 
