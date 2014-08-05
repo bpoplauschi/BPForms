@@ -53,11 +53,11 @@
 
 - (void)setupCell {
     self.contentView.backgroundColor = [BPAppearance sharedInstance].buttonCellBackgroundColor;
-	CGFloat cornerRadius = [BPAppearance sharedInstance].buttonCellCornerRadius;
-	if (cornerRadius  != 0.0f) {
-		self.contentView.layer.cornerRadius = cornerRadius;
-		self.contentView.layer.masksToBounds = YES;
-	}
+    CGFloat cornerRadius = [BPAppearance sharedInstance].buttonCellCornerRadius;
+    if (cornerRadius  != 0.0f) {
+        self.contentView.layer.cornerRadius = cornerRadius;
+        self.contentView.layer.masksToBounds = YES;
+    }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 

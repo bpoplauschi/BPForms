@@ -80,12 +80,12 @@
     
     self.textView.layer.borderColor = [BPAppearance sharedInstance].inputCellTextFieldBorderColor.CGColor;
     self.textView.layer.borderWidth = [BPAppearance sharedInstance].inputCellTextFieldBorderSize;
-	CGFloat cornerRadius = [BPAppearance sharedInstance].inputCellTextFieldCornerRadius;
-	if (cornerRadius != 0.0f)
-	{
-		self.textView.layer.cornerRadius = cornerRadius;
-		self.textView.layer.masksToBounds = YES;
-	}
+    CGFloat cornerRadius = [BPAppearance sharedInstance].inputCellTextFieldCornerRadius;
+    if (cornerRadius != 0.0f)
+    {
+        self.textView.layer.cornerRadius = cornerRadius;
+        self.textView.layer.masksToBounds = YES;
+    }
 
     [self.contentView addSubview:self.textView];
     

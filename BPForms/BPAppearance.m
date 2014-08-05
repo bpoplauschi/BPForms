@@ -54,11 +54,11 @@
     self.infoCellBackgroundColor            = [UIColor whiteColor];
     self.infoCellLabelTextColor             = [UIColor colorWithRed:0.25f green:0.25f blue:0.25f alpha:1.0f];
     self.infoCellLabelBackgroundColor       = [UIColor clearColor];
-	self.inputCellTextFieldBorderSize = 0.5f;
-	self.inputCellTextFieldCornerRadius = 0.0f;
+    self.inputCellTextFieldBorderSize = 0.5f;
+    self.inputCellTextFieldCornerRadius = 0.0f;
     
     self.buttonCellBackgroundColor          = [UIColor whiteColor];
-	self.buttonCellCornerRadius				= 0.0f;
+    self.buttonCellCornerRadius				= 0.0f;
     
     self.headerFooterLabelTextColor         = [UIColor darkGrayColor];
     
