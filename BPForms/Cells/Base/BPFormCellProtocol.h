@@ -40,6 +40,6 @@
  *
  *  @return the cell height
  */
-- (CGFloat)cellHeight;
+- (CGFloat)cellHeight:(CGFloat)defaultRowHeight;
 
 @end

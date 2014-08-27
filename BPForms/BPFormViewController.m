@@ -267,7 +267,7 @@
         NSArray *sectionCells = self.formCells[indexPath.section];
         if (indexPath.row < sectionCells.count) {
             BPFormCell *cell = self.formCells[indexPath.section][indexPath.row];
-            return [cell cellHeight];
+            return [cell cellHeight:tableView.rowHeight];
         }
     }
     return 0.0;

@@ -123,8 +123,8 @@
     }
 }
 
-- (CGFloat)cellHeight {
-    CGFloat cellHeight = (self.customCellHeight ?: self.bounds.size.height);
+- (CGFloat)cellHeight:(CGFloat)defaultRowHeight {
+    CGFloat cellHeight = (self.customCellHeight ?: defaultRowHeight);
     return cellHeight;
 }
 

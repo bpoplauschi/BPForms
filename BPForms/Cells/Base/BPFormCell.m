@@ -61,8 +61,8 @@ static NSString *BPInvalidImageName = nil;
     return self;
 }
 
-- (CGFloat)cellHeight {
-    CGFloat cellHeight = (self.customCellHeight ?: self.bounds.size.height) + self.spaceToNextCell;
+- (CGFloat)cellHeight:(CGFloat)defaultRowHeight {
+    CGFloat cellHeight = (self.customCellHeight ?: defaultRowHeight) + self.spaceToNextCell;
     return cellHeight;
 }
 
