@@ -150,4 +150,7 @@ static NSString *BPInvalidImageName = nil;
     }
 }
 
+- (void)resignEditing {
+}
+
 @end

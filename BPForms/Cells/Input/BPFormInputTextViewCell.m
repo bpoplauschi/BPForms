@@ -135,4 +135,8 @@
     }
 }
 
+- (void)resignEditing {
+    [self.textView resignFirstResponder];
+}
+
 @end

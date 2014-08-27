@@ -135,4 +135,8 @@
     }
 }
 
+- (void)resignEditing {
+    [self.textField resignFirstResponder];
+}
+
 @end

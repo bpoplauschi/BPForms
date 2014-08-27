@@ -68,6 +68,11 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
 - (void)updateAccordingToValidationState;
 
 /**
+ *  Return a responder that provides editing features (i.e. a text field) so that we can resign it when needed
+ */
+- (void)resignEditing;
+
+/**
  *  Use to set a custom image as mandatory icon
  *
  *  @param inMandatoryImageName - the image name must point to a file in the main bundle
