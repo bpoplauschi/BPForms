@@ -316,6 +316,15 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    BPFormInputCell *cell = [textField containerInputCell];
+    if (cell && cell.shouldBeginEditingBlock) {
+        return cell.shouldBeginEditingBlock(cell);
+    }
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     BPFormInputCell *cell = [textField containerInputCell];
     if (!cell) {
@@ -412,6 +421,15 @@
 }
 
 #pragma mark - UITextViewDelegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    BPFormInputCell *cell = [textView containerInputCell];
+    if (cell && cell.shouldBeginEditingBlock) {
+        return cell.shouldBeginEditingBlock(cell);
+    }
+    return YES;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     BPFormInputCell *cell = [textView containerInputCell];
     if (!cell) {
