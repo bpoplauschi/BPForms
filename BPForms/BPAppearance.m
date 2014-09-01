@@ -54,8 +54,11 @@
     self.infoCellBackgroundColor            = [UIColor whiteColor];
     self.infoCellLabelTextColor             = [UIColor colorWithRed:0.25f green:0.25f blue:0.25f alpha:1.0f];
     self.infoCellLabelBackgroundColor       = [UIColor clearColor];
+    self.inputCellTextFieldBorderSize 		= 0.5f;
+    self.inputCellTextFieldCornerRadius 	= 0.0f;
     
     self.buttonCellBackgroundColor          = [UIColor whiteColor];
+    self.buttonCellCornerRadius				= 0.0f;
     
     self.headerFooterLabelTextColor         = [UIColor darkGrayColor];
     
@@ -64,8 +67,14 @@
     self.infoCellLabelFont                  = [UIFont systemFontOfSize:10.0f];
     self.headerFooterLabelFont              = [UIFont systemFontOfSize:12.0f];
     
-    self.infoCellHeight = 16.0f;
-    self.spaceBetweenCells = 8.0f;
+    self.infoCellHeight 					= 16.0f;
+    self.spaceBetweenCells 					= 8.0f;
+
+    self.datePickerCellCornerRadius			= 0.0;
+    self.datePickerCellBackgroundColor 		= [UIColor whiteColor];
+    self.datePickerCellDateTextColor		= [UIColor blackColor];
+    self.datePickerCellDateTextFont = [UIFont systemFontOfSize:14.0f];
+    self.datePickerCellDateFloatingLabelFont = [UIFont systemFontOfSize: 8.0f];
 }
 
 @end
