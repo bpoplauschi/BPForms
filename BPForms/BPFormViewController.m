@@ -135,7 +135,7 @@
         // get the existing inset and make the bottom = keyboard height + a padding
         // note that insets.top is 0 (iOS6) and 64 (iOS7)
         UIEdgeInsets insets = self.tableView.contentInset;
-        insets.bottom = keyboardHeight + padding - ((CGRectGetHeight(_tableView.superview.bounds) - CGRectGetMaxY(_tableView.frame)));
+        insets.bottom = keyboardHeight + padding - ((CGRectGetHeight(self.tableView.superview.bounds) - CGRectGetMaxY(self.tableView.frame)));
         self.tableView.contentInset = insets;
         self.tableView.scrollIndicatorInsets = insets;
         
