@@ -63,7 +63,7 @@
 
 - (void)setupFormVC {
     self.keyboardMode = BPFormKeyboardModeAuto;
-	
+
     self.sectionHeaderTitles = [NSMutableDictionary dictionary];
     self.sectionFooterTitles = [NSMutableDictionary dictionary];
     
@@ -73,7 +73,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     [self setupTableView];
     
@@ -115,46 +115,46 @@
             break;
     }
     
-	return result;
+    return result;
 }
 
 - (void)keyboardWillShow:(NSNotification *)inNotification {
-	if ([self shouldMoveForKeyboard]) {
-		// make the tableview fit the visible area of the screen, so it's scrollable to all the cells
-		// note: for landscape, the sizes are switched, so we need to use width as height
-		
-		CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-		
+    if ([self shouldMoveForKeyboard]) {
+        // make the tableview fit the visible area of the screen, so it's scrollable to all the cells
+        // note: for landscape, the sizes are switched, so we need to use width as height
+
+        CGSize keyboardSize = [[[inNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
         // the keyboard height is always the smallest one
         // we used to have CGFloat keyboardHeight = (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) ? keyboardSize.width : keyboardSize.height;
         // but when the app is launched directly in landscape, the interface is UIDeviceInterfaceUnknown
         
-		CGFloat keyboardHeight = (keyboardSize.width > keyboardSize.height) ? keyboardSize.height : keyboardSize.width;
+        CGFloat keyboardHeight = (keyboardSize.width > keyboardSize.height) ? keyboardSize.height : keyboardSize.width;
         
         CGFloat padding = 20;
         // get the existing inset and make the bottom = keyboard height + a padding
         // note that insets.top is 0 (iOS6) and 64 (iOS7)
         UIEdgeInsets insets = self.tableView.contentInset;
-        insets.bottom = keyboardHeight + padding;
-		self.tableView.contentInset = insets;
-		self.tableView.scrollIndicatorInsets = insets;
+        insets.bottom = keyboardHeight + padding - ((CGRectGetHeight(_tableView.superview.bounds) - CGRectGetMaxY(_tableView.frame)));
+        self.tableView.contentInset = insets;
+        self.tableView.scrollIndicatorInsets = insets;
         
         BPFormCell *firstResponderCell = [self cellContainingFirstResponder];
-		NSIndexPath *selectedRow = [self.tableView indexPathForCell:firstResponderCell];
-		[self.tableView scrollToRowAtIndexPath:selectedRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	}
+        NSIndexPath *selectedRow = [self.tableView indexPathForCell:firstResponderCell];
+        [self.tableView scrollToRowAtIndexPath:selectedRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)inNotification {
-	if ([self shouldMoveForKeyboard]) {
-		[UIView animateWithDuration:0.25 animations:^{
+    if ([self shouldMoveForKeyboard]) {
+        [UIView animateWithDuration:0.25 animations:^{
             // get the existing inset and reset the bottom to 0
             UIEdgeInsets insets = self.tableView.contentInset;
             insets.bottom = 0;
-			self.tableView.contentInset = insets;
-			self.tableView.scrollIndicatorInsets = insets;
-		}];
-	}
+            self.tableView.contentInset = insets;
+            self.tableView.scrollIndicatorInsets = insets;
+        }];
+    }
 }
 
 - (void)setupTableView {
