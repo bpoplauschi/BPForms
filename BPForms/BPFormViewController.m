@@ -164,19 +164,24 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
+
+    [self setupTableViewConstraints];
+
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [BPAppearance sharedInstance].tableViewBackGroundColor;
+}
+
+- (void)setupTableViewConstraints
+{
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
         make.height.equalTo(self.view.mas_height);
         make.top.equalTo(self.view.mas_top);
         make.left.equalTo(self.view.mas_left);
     }];
-    
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [BPAppearance sharedInstance].tableViewBackGroundColor;
 }
 
 - (void)setHeaderTitle:(NSString *)inHeaderTitle forSection:(int)inSection {
