@@ -61,12 +61,17 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+- (UIButton *)makeButton {
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	button.backgroundColor = [UIColor clearColor];
+	return button;
+}
+
 - (void)setupButton {
-    self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.button.backgroundColor = [UIColor clearColor];
-    [self.button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:self.button];
-    
+	self.button = [self makeButton];
+	[self.button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.contentView addSubview:self.button];
+
     // need to set the frame, otherwise there are cases where, even if the constraints are fine, the frame remains zero-rect
     self.button.frame = CGRectMake(roundf(30.0f / 2.0f), self.frame.origin.y, self.frame.size.width - 30.0f, self.frame.size.height);
     
