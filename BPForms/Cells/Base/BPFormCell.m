@@ -83,7 +83,7 @@ static NSString *BPInvalidImageName = nil;
     [self.mandatoryImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(asterixImage.size.width));
         make.top.equalTo(@4);
-        make.right.equalTo(self.mas_left).offset(4 + asterixImage.size.width).priorityLow();
+        make.right.equalTo(self.contentView.mas_left).offset(4 + asterixImage.size.width).priorityLow();
         make.height.equalTo(@(asterixImage.size.height));
     }];
 }
@@ -119,8 +119,8 @@ static NSString *BPInvalidImageName = nil;
         
         [self.validationImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(@(checkmarkImage.size.width));
-            make.left.equalTo(self.mas_right).with.offset(-checkmarkImage.size.width).priorityLow();
-            make.centerY.equalTo(self.mas_centerY).priorityLow();
+            make.left.equalTo(self.contentView.mas_right).with.offset(-checkmarkImage.size.width).priorityLow();
+            make.centerY.equalTo(self.contentView.mas_centerY).priorityLow();
             make.height.equalTo(@(checkmarkImage.size.height));
         }];
     }

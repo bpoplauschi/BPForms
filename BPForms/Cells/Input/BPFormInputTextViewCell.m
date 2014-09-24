@@ -93,10 +93,10 @@
     [self.heightConstraint uninstall];
     
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-        self.widthConstraint = make.width.equalTo(self.mas_width).offset(-30);
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.mas_top);
-        self.heightConstraint = make.height.equalTo(self.mas_height).offset(-self.spaceToNextCell);
+        self.widthConstraint = make.width.equalTo(self.contentView.mas_width).offset(-30);
+        make.centerX.equalTo(self.contentView.mas_centerX);
+        make.top.equalTo(self.contentView.mas_top);
+        self.heightConstraint = make.height.equalTo(self.contentView.mas_height).offset(-self.spaceToNextCell);
     }];
 }
 
@@ -107,7 +107,7 @@
         if (self.customContentHeight == 0) {
             [self.heightConstraint uninstall];
             [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-                self.heightConstraint = make.height.equalTo(self.mas_height).offset(-inSpaceToNextCell);
+                self.heightConstraint = make.height.equalTo(self.contentView.mas_height).offset(-inSpaceToNextCell);
             }];
         }
     }

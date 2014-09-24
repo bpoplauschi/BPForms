@@ -92,10 +92,11 @@
     [self.heightConstraint uninstall];
     
     [self.textField mas_updateConstraints:^(MASConstraintMaker *make) {
-        self.widthConstraint = make.width.equalTo(self.mas_width).offset(-30);
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.mas_top);
-        self.heightConstraint = make.height.equalTo(self.mas_height).offset(-self.spaceToNextCell);
+        self.widthConstraint = make.width.equalTo(self.contentView.mas_width).offset(-30);
+        make.centerX.equalTo(self.contentView.mas_centerX);
+        make.top.equalTo(self.contentView.mas_top);
+		self.heightConstraint = make.bottom.equalTo(self.contentView.mas_bottom).offset(-self.spaceToNextCell);
+		//make.height.equalTo(self.contentView.mas_height).offset(-self.spaceToNextCell);
     }];
 }
 
@@ -107,7 +108,7 @@
             
             [self.heightConstraint uninstall];
             [self.textField mas_updateConstraints:^(MASConstraintMaker *make) {
-                self.heightConstraint = make.height.equalTo(self.mas_height).offset(-inSpaceToNextCell);
+				self.heightConstraint = make.height.equalTo(self.contentView.mas_height).offset(-inSpaceToNextCell);
             }];
         }
     }

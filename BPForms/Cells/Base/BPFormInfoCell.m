@@ -55,9 +55,9 @@
     [self.contentView addSubview:self.label];
     
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.mas_width).offset(-30);
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.mas_top);
+        make.width.equalTo(self.contentView.mas_width).offset(-30);
+        make.centerX.equalTo(self.contentView.mas_centerX);
+        make.top.equalTo(self.contentView.mas_top);
         make.height.equalTo(@10);
     }];
 }
