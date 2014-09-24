@@ -26,7 +26,6 @@
 #import "BPAppearance.h"
 #import "BPFormCell.h"
 #import "BPFormInputCell.h"
-#import "BPFormTextField.h"
 #import "BPFormInfoCell.h"
 #import <Masonry.h>
 #import "UITextField+BPForms.h"
@@ -163,6 +162,8 @@
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+	if (self.tableView.rowHeight == 0)
+		self.tableView.rowHeight = 44;
     [self.view addSubview:self.tableView];
 
     [self setupTableViewConstraints];
