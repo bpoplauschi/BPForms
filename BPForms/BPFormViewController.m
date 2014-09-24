@@ -201,12 +201,14 @@
     BOOL valid = YES;
     
     for (NSArray *section in self.formCells) {
-        for (BPFormCell *cell in section) {
-            if (BPFormValidationStateInvalid == cell.validationState) {
-                valid = NO;
-                break;
-            }
-        }
+		for (UITableViewCell *cell in section) {
+     	 if ([cell isKindOfClass:[BPFormCell class]]) {
+          if (BPFormValidationStateInvalid == ((BPFormCell *)cell).validationState) {
+              valid = NO;
+              break;
+          }
+      }
+  }
     }
     
     return valid;
