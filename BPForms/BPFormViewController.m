@@ -162,7 +162,7 @@
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-	if (self.tableView.rowHeight == 0)
+	if (self.tableView.rowHeight <= 0)
 		self.tableView.rowHeight = 44;
     [self.view addSubview:self.tableView];
 
