@@ -59,6 +59,7 @@
 		1F74BC5856834D6B8CD2CDD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CB63CE18D4989900FEAC2E /* BPFormTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFormTextView.h; sourceTree = "<group>"; };
 		43CB63CF18D4989900FEAC2E /* BPFormTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFormTextView.m; sourceTree = "<group>"; };
+		43DB76CB1A02DD140072D88F /* BPForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPForms.h; sourceTree = "<group>"; };
 		BFA2660C96A9C631B43BAE88 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C9E5185024735990E772634A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DA192D0218C752BD0025FFB4 /* BPFormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BPFormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +243,7 @@
 			children = (
 				DA8A34E218D73F710017D814 /* Cells */,
 				DA8A34DB18D73ED60017D814 /* UIKit */,
+				43DB76CB1A02DD140072D88F /* BPForms.h */,
 				DAA1ED2F18C8770800FAAE03 /* BPAppearance.h */,
 				DAA1ED3018C8770800FAAE03 /* BPAppearance.m */,
 				DA192D4018C753370025FFB4 /* BPFormTextField.h */,

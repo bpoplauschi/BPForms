@@ -22,10 +22,10 @@
 //  SOFTWARE.
 
 #import "BPSignUpViewController.h"
-#import "BPFormButtonCell.h"
-#import "BPFormInfoCell.h"
+#import "BPForms.h"
 #import "BPFormFloatInputTextFieldCell.h"
 #import "BPFormFloatInputTextViewCell.h"
+
 
 @interface BPSignUpViewController ()
 
