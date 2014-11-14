@@ -45,6 +45,11 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
  */
 @property (nonatomic, strong) NSArray *formCells;
 
+/** 
+ *  Set this to use a custom insets for headers
+ */
+@property (nonatomic, assign) UIEdgeInsets customSectionHeaderInsets;
+
 /**
  *  Set this to use a custom height for headers
  */
