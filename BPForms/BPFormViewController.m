@@ -129,14 +129,7 @@
         // but when the app is launched directly in landscape, the interface is UIDeviceInterfaceUnknown
         
         CGFloat keyboardHeight = (keyboardSize.width > keyboardSize.height) ? keyboardSize.height : keyboardSize.width;
-        
-        CGFloat padding = 20;
-        // get the existing inset and make the bottom = keyboard height + a padding
-        // note that insets.top is 0 (iOS6) and 64 (iOS7)
-        UIEdgeInsets insets = self.tableView.contentInset;
-        insets.bottom = keyboardHeight + padding - ((CGRectGetHeight(self.tableView.superview.bounds) - CGRectGetMaxY(self.tableView.frame)));
-        self.tableView.contentInset = insets;
-        self.tableView.scrollIndicatorInsets = insets;
+        [self handleKeyboardSizeChange:keyboardHeight];
         
         BPFormCell *firstResponderCell = [self cellContainingFirstResponder];
         NSIndexPath *selectedRow = [self.tableView indexPathForCell:firstResponderCell];
@@ -147,13 +140,24 @@
 - (void)keyboardWillHide:(NSNotification *)inNotification {
     if ([self shouldMoveForKeyboard]) {
         [UIView animateWithDuration:0.25 animations:^{
-            // get the existing inset and reset the bottom to 0
-            UIEdgeInsets insets = self.tableView.contentInset;
-            insets.bottom = 0;
-            self.tableView.contentInset = insets;
-            self.tableView.scrollIndicatorInsets = insets;
+			[self handleKeyboardSizeChange:0];
         }];
     }
+}
+
+- (void)handleKeyboardSizeChange:(CGFloat)keyboardHeight {
+    // get the existing inset and make the bottom = keyboard height + a padding
+    // note that insets.top is 0 (iOS6) and 64 (iOS7)
+    UIEdgeInsets insets = self.tableView.contentInset;
+	if (keyboardHeight) {
+	    CGFloat padding = 20;
+	    insets.bottom = keyboardHeight + padding - ((CGRectGetHeight(self.tableView.superview.bounds) - CGRectGetMaxY(self.tableView.frame)));
+	} else {
+		BOOL isToolBarShowing = self.navigationController.toolbar && !self.navigationController.toolbar.hidden;
+		insets.bottom = isToolBarShowing ? self.navigationController.toolbar.frame.size.height : 0;
+	}
+    self.tableView.contentInset = insets;
+    self.tableView.scrollIndicatorInsets = insets;
 }
 
 - (void)setupTableView {

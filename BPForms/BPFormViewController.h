@@ -93,3 +93,16 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
 - (BPFormCell *)cellContainingFirstResponder;
 
 @end
+
+
+@interface BPFormViewController (Overridable)
+
+/**
+ * Handle the keyboard size change by updating the tableview insets. This is overridable by subclasses
+ * which place elements surrounding the table.
+ *
+ *  @param keyboardHeight the new keyboard height (0 for keyboard hiding)
+ */
+- (void)handleKeyboardSizeChange:(CGFloat)keyboardHeight;
+
+@end
