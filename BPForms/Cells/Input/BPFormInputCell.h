@@ -27,6 +27,7 @@
 
 @class BPFormInputCell;
 
+typedef BOOL (^BPFormShouldBeginEditingBlock) (BPFormInputCell *inCell);
 typedef void (^BPFormInputCellEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
 typedef BOOL (^BPFormInputCellShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
 
@@ -39,6 +40,7 @@ BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pa
 @interface BPFormInputCell : BPFormCell
 
 // Blocks matching the UITextFieldDelegate methods
+@property (nonatomic, copy) BPFormShouldBeginEditingBlock  shouldBeginEditingBlock;
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didBeginEditingBlock;
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didEndEditingBlock;
 @property (nonatomic, copy) BPFormInputCellShouldEditBlock shouldChangeTextBlock;

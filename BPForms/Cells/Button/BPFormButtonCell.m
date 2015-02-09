@@ -52,7 +52,12 @@
 }
 
 - (void)setupCell {
-    self.backgroundColor = [BPAppearance sharedInstance].buttonCellBackgroundColor;
+    self.contentView.backgroundColor = [BPAppearance sharedInstance].buttonCellBackgroundColor;
+    CGFloat cornerRadius = [BPAppearance sharedInstance].buttonCellCornerRadius;
+    if (cornerRadius  != 0.0f) {
+        self.contentView.layer.cornerRadius = cornerRadius;
+        self.contentView.layer.masksToBounds = YES;
+    }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -118,8 +123,8 @@
     }
 }
 
-- (CGFloat)cellHeight {
-    CGFloat cellHeight = (self.customCellHeight ?: self.bounds.size.height);
+- (CGFloat)cellHeight:(CGFloat)defaultRowHeight {
+    CGFloat cellHeight = (self.customCellHeight ?: defaultRowHeight);
     return cellHeight;
 }
 

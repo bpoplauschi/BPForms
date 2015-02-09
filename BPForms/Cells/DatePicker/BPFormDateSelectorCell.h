@@ -1,7 +1,7 @@
 //
-//  BPFormCellProtocol.h
+//  BPFormDateSelectorCell.h
 //
-//  Copyright (c) 2014 Bogdan Poplauschi
+//  Copyright (c) 2014 Florent Pillet
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,25 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "BPFormCell.h"
 
-@protocol BPFormCellProtocol <NSObject>
+@interface BPFormDateSelectorCell : BPFormCell
 
-@required
+@property (nonatomic, strong) NSDate *minDate;
+@property (nonatomic, strong) NSDate *maxDate;
 
-/**
- *  Getter and setter for cell custom height
- */
-- (CGFloat)customCellHeight;
+@property (nonatomic, strong) NSDate *date;					// observable via KVO
 
-- (void)setCustomCellHeight:(CGFloat)inHeight;
-
-/**
- *  Calculate the cell height
- *  If customCellHeight is set, returns that value, otherwise it just measures the size of the cell.
- *
- *  @return the cell height
- */
-- (CGFloat)cellHeight:(CGFloat)defaultRowHeight;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSString *placeholderString;
 
 @end
