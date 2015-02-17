@@ -1,13 +1,13 @@
 PODS:
-  - JVFloatLabeledTextField (0.0.9)
-  - Masonry (0.5.3)
+  - JVFloatLabeledTextField (1.0.2)
+  - Masonry (0.6.1)
 
 DEPENDENCIES:
   - JVFloatLabeledTextField
   - Masonry
 
 SPEC CHECKSUMS:
-  JVFloatLabeledTextField: b6c7d824d231b3c01d14692feada878808480af8
-  Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
+  JVFloatLabeledTextField: c1ad6b4b5bd77115cfe6c71ba4c023866df5c4cf
+  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0
