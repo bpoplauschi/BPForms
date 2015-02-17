@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
 };
 
 @class BPFormCell;
+@class BPFormInputCell;
 
 /**
  *  Main class, represents the form controller
@@ -86,10 +87,22 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
 - (BOOL)allCellsAreValid;
 
 /**
+ *  Forces the validation on all input fields
+ */
+- (void)forceValidation;
+
+/**
  *  Will return the cell that contains the UI element that is first responder or nil, if none found
  *
  *  @return the cell (or nil)
  */
 - (BPFormCell *)cellContainingFirstResponder;
+
+/**
+ *  Triggers the update (appear/dissapear) of the info cell for a provided cell
+ *
+ *  @param inInputCell the input cell
+ */
+- (void)updateInfoCellBelowInputCell:(BPFormInputCell *)inInputCell;
 
 @end
