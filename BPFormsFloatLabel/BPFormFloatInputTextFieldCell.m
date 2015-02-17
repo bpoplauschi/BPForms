@@ -39,6 +39,7 @@
             
             [floatLabelTextField floatingLabel].font = [BPAppearance sharedInstance].inputCellTextFieldFloatingLabelFont;
             [floatLabelTextField floatingLabel].backgroundColor = [UIColor clearColor];
+            floatLabelTextField.adjustsClearButtonRect = 0;
         }
     }
     return self;
