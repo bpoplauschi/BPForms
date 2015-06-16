@@ -198,6 +198,7 @@
     }
 }
 
+#pragma mark - Validation
 - (BOOL)allCellsAreValid {
     BOOL valid = YES;
     
@@ -213,6 +214,24 @@
     }
     
     return valid;
+}
+
+- (void)forceValidation {
+    for (NSArray *section in self.formCells) {
+        for (UITableViewCell *cell in section) {
+            if ([cell isKindOfClass:[BPFormInputTextFieldCell class]]) {
+                BPFormInputTextFieldCell *inputTextFieldCell = (BPFormInputTextFieldCell*)cell;
+                inputTextFieldCell.shouldChangeTextBlock(inputTextFieldCell, inputTextFieldCell.textField.text);
+                [inputTextFieldCell updateAccordingToValidationState];
+                [self updateInfoCellBelowInputCell:inputTextFieldCell];
+            } else if ([cell isKindOfClass:[BPFormInputTextViewCell class]]) {
+                BPFormInputTextViewCell *inputTextViewCell = (BPFormInputTextViewCell*)cell;
+                inputTextViewCell.shouldChangeTextBlock(inputTextViewCell, inputTextViewCell.textView.text);
+                [inputTextViewCell updateAccordingToValidationState];
+                [self updateInfoCellBelowInputCell:inputTextViewCell];
+            }
+        }
+    }
 }
 
 - (BPFormCell *)cellContainingFirstResponder {

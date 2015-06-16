@@ -51,6 +51,7 @@
     self.label.textColor = [BPAppearance sharedInstance].infoCellLabelTextColor;
     self.label.font = [BPAppearance sharedInstance].infoCellLabelFont;
     self.label.backgroundColor = [BPAppearance sharedInstance].infoCellLabelBackgroundColor;
+    self.label.textAlignment = NSTextAlignmentCenter;
     
     [self.contentView addSubview:self.label];
     
