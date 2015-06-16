@@ -50,6 +50,11 @@ typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
  */
 @property (nonatomic, assign) UIEdgeInsets customSectionHeaderInsets;
 
+/** 
+ *  Set this to use a custom insets for footers
+ */
+@property (nonatomic, assign) UIEdgeInsets customSectionFooterInsets;
+
 /**
  *  Set this to use a custom height for headers
  */
