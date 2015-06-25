@@ -40,12 +40,20 @@
 - (CGRect)addXOffset:(CGFloat)xOffset toBounds:(CGRect)inBounds {
     CGRect frame = inBounds;
     frame.origin.x = xOffset;
-    frame.size.width -= xOffset;
     
+    // The xOffset should be removed twice from the width, in order to respect the right/left simmetry, along with the width of the clear button - 19 px, if displayed.
+    CGFloat clearButtonWidth = (self.clearButtonMode != UITextFieldViewModeNever) ? 19.0f : 0.0f;
+    frame.size.width -= 2 * xOffset + clearButtonWidth;
+    
+    CGFloat yOffset = 0.0f;
     // also, on iOS6 and earlier, the text starts right from the top, so add a similar 12 pixel vertical offset
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
-        frame.origin.y += 12;
+        yOffset = 12.0f;
+    } else {
+        yOffset = 8.0f;
     }
+    
+    frame.origin.y += yOffset;
     
     inBounds = frame;
     return CGRectInset(inBounds, 0, 0);

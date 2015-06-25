@@ -22,6 +22,7 @@
 //  SOFTWARE.
 
 #import "BPFormFloatLabelTextField.h"
+#import "BPAppearance.h"
 #import "UITextField+BPForms.h"
 
 
@@ -30,12 +31,22 @@
 /**
  *  The following methods add an x offset to the textfield text
  */
+
 - (CGRect)textRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
+    return [self addXOffset:[BPAppearance sharedInstance].textFieldSidePadding toBounds:inBounds];
 }
 
 - (CGRect)editingRectForBounds:(CGRect)inBounds {
-    return [self addXOffset:5 toBounds:inBounds];
+    return [self addXOffset:[BPAppearance sharedInstance].textFieldSidePadding toBounds:inBounds];
+}
+
+- (CGRect)clearButtonRectForBounds:(CGRect)inBounds {
+    CGRect bounds = [super clearButtonRectForBounds:inBounds];
+    // We need to set the same x offset for the clear button rect.
+    bounds.origin.x -= [BPAppearance sharedInstance].textFieldSidePadding;
+    // We also need to add back 5px (original padding on the textField structure)
+    bounds.origin.x += 5.0f;
+    return bounds;
 }
 
 @end

@@ -59,4 +59,6 @@
 @property (nonatomic, assign) CGFloat infoCellHeight;                       // default is 16
 @property (nonatomic, assign) CGFloat spaceBetweenCells;                    // default is 8
 
+@property (nonatomic, assign) CGFloat textFieldSidePadding;                 // default is 5
+
 @end
