@@ -29,8 +29,14 @@
  */
 @interface BPFormInfoCell : UITableViewCell <BPFormCellProtocol>
 
+/**
+ *  The label
+ */
 @property (nonatomic, strong) UILabel *label;
 
-@property (nonatomic, assign) CGFloat customCellHeight;             // set this to use any height for the cell
+/**
+ *  Set this to use any height for the cell
+ */
+@property (nonatomic, assign) CGFloat customCellHeight;
 
 @end

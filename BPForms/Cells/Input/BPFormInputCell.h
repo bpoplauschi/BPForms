@@ -27,9 +27,32 @@
 
 @class BPFormInputCell;
 
+/**
+ *  Input cell block called on edit
+ *
+ *  @param inCell the cell
+ *  @param inText the new text value
+ */
 typedef void (^BPFormInputCellEditingBlock)   (BPFormInputCell *inCell, NSString *inText);
+
+/**
+ *  Input cell block called on should edit
+ *
+ *  @param inCell the cell
+ *  @param inText the new text value
+ *
+ *  @return YES if we should edit
+ */
 typedef BOOL (^BPFormInputCellShouldEditBlock)(BPFormInputCell *inCell, NSString *inText);
 
+/**
+ *  Block used for validation
+ *
+ *  @param pattern the pattern
+ *  @param message the message to be displayed if the pattern is not matched
+ *
+ *  @return the block created
+ */
 BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message);
 
 

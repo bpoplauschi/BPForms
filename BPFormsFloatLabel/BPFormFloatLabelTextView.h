@@ -23,6 +23,9 @@
 
 #import "JVFloatLabeledTextView.h"
 
+/**
+ *  Had to subclass `JVFloatLabeledTextView` to be able to add our x offset
+ */
 @interface BPFormFloatLabelTextView : JVFloatLabeledTextView
 
 @end

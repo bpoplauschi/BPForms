@@ -23,9 +23,14 @@
 
 #import "BPFormInputCell.h"
 
+/**
+ *  Textview input cell
+ */
 @interface BPFormInputTextViewCell : BPFormInputCell
 
-// UI components
+/**
+ *  The textview
+ */
 @property (nonatomic, strong) UITextView  *textView;
 
 @end

@@ -43,6 +43,9 @@
     return self;
 }
 
+/**
+ *  Load the default values
+ */
 - (void)loadDefaults {
     self.tableViewBackGroundColor           = [UIColor whiteColor];
     

@@ -23,10 +23,21 @@
 
 #import "BPFormCellProtocol.h"
 
-
+/**
+ *  Cell validation state
+ */
 typedef NS_ENUM(NSInteger, BPFormValidationState) {
+    /**
+     *  Invalid
+     */
     BPFormValidationStateInvalid = -1,
+    /**
+     *  Valid
+     */
     BPFormValidationStateValid,
+    /**
+     *  Not verified
+     */
     BPFormValidationStateNone
 };
 
@@ -38,23 +49,59 @@ typedef NS_ENUM(NSInteger, BPFormValidationState) {
  */
 @interface BPFormCell : UITableViewCell <BPFormCellProtocol>
 
+/**
+ *  The validation state
+ */
 @property (nonatomic, assign) BPFormValidationState validationState;
 
-@property (nonatomic, assign) CGFloat               customCellHeight;   // set this to use any height for the cell
-@property (nonatomic, assign) CGFloat               customContentHeight;// set this to override the content height (aka height of the content elements)
-@property (nonatomic, assign) CGFloat               customContentWidth; // set this to override the content width (aka width of the content elements)
-@property (nonatomic, assign) CGFloat               spaceToNextCell;    // space till next cell. Default is BPAppearance.spaceBetweenCells
+/**
+ *  Set this to use any height for the cell
+ */
+@property (nonatomic, assign) CGFloat               customCellHeight;
 
-@property (nonatomic, assign) BOOL                  mandatory;          // if set to YES, an icon will appear next the the cell indicating this is mandatory
+/**
+ *  Set this to override the content height (aka height of the content elements)
+ */
+@property (nonatomic, assign) CGFloat               customContentHeight;
 
-@property (nonatomic, strong) BPFormInfoCell        *infoCell;          // the info cell describing the cell state (i.e. the reason why the validation failed)
+/**
+ *  Set this to override the content width (aka width of the content elements)
+ */
+@property (nonatomic, assign) CGFloat               customContentWidth;
 
-@property (nonatomic, assign) BOOL                  shouldShowInfoCell; // YES if the info cell needs to be displayed
+/**
+ *  Space till next cell. Default is BPAppearance.spaceBetweenCells
+ */
+@property (nonatomic, assign) CGFloat               spaceToNextCell;
 
+/**
+ *  If set to YES, an icon will appear next the the cell indicating this is mandatory
+ */
+@property (nonatomic, assign) BOOL                  mandatory;
+
+/**
+ *  The info cell describing the cell state (i.e. the reason why the validation failed)
+ */
+@property (nonatomic, strong) BPFormInfoCell        *infoCell;
+
+/**
+ *  YES if the info cell needs to be displayed
+ */
+@property (nonatomic, assign) BOOL                  shouldShowInfoCell;
+
+/**
+ *  YES if the validation needs to be displayed
+ */
 @property (nonatomic, assign) BOOL                  shouldShowValidation;
 
-// UI controls
+/**
+ *  The imageview for the mandatory mark
+ */
 @property (nonatomic, strong) UIImageView           *mandatoryImageView;
+
+/**
+ *  The imageview for the validation result
+ */
 @property (nonatomic, strong) UIImageView           *validationImageView;
 
 /**

@@ -24,7 +24,9 @@
 
 #import "BPFormCell.h"
 
-
+/**
+ *  Button pressed block
+ */
 typedef void(^ButtonPressedBlock)(void);
 
 
@@ -33,8 +35,14 @@ typedef void(^ButtonPressedBlock)(void);
  */
 @interface BPFormButtonCell : BPFormCell
 
+/**
+ *  The button
+ */
 @property (nonatomic, strong) UIButton *button;
 
+/**
+ *  The action block
+ */
 @property (nonatomic, copy) ButtonPressedBlock buttonActionBlock;   // block called when the button was pressed
 
 @end

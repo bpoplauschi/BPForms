@@ -22,9 +22,21 @@
 //  SOFTWARE.
 
 
+/**
+ *  Supported keyboard modes
+ */
 typedef NS_ENUM(NSInteger, BPFormKeyboardMode) {
-	BPFormKeyboardModeAuto      = -1,
-	BPFormKeyboardModeDontMove  = 0,
+    /**
+     *  Move on keyboard action only if the form is not presented inside a popover
+     */
+    BPFormKeyboardModeAuto      = -1,
+    /**
+     *  Never move on keyboard action
+     */
+    BPFormKeyboardModeDontMove  = 0,
+    /**
+     *  Always move on keyboard action
+     */
     BPFormKeyboardModeMove      = 1
 };
 

@@ -28,10 +28,15 @@
 @required
 
 /**
- *  Getter and setter for cell custom height
+ *  Getter for cell custom height
  */
 - (CGFloat)customCellHeight;
 
+/**
+ *  Setter for cell custom height
+ *
+ *  @param inHeight the new height
+ */
 - (void)setCustomCellHeight:(CGFloat)inHeight;
 
 /**

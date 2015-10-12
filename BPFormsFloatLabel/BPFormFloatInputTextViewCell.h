@@ -24,8 +24,16 @@
 
 #import "BPFormInputTextViewCell.h"
 
+/**
+ *  Input cell with floating labels. Uses `JVFloatLabeledTextView`
+ */
 @interface BPFormFloatInputTextViewCell : BPFormInputTextViewCell
 
+/**
+ *  Used to set a placeholder
+ *
+ *  @param inPlaceholder the placeholder
+ */
 - (void)setPlaceholder:(NSString *)inPlaceholder;
 
 @end

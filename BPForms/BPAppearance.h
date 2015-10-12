@@ -27,38 +27,93 @@
  */
 @interface BPAppearance : NSObject
 
+/**
+ *  Singleton method
+ */
 + (BPAppearance *)sharedInstance;
 
-// -- Colors --
-@property (nonatomic, strong) UIColor *tableViewBackGroundColor;            // default is white
+#pragma mark - Colors
 
-@property (nonatomic, strong) UIColor *inputCellBackgroundColor;            // default is white
-@property (nonatomic, strong) UIColor *inputCellTextFieldTextColor;         // default is black
-@property (nonatomic, strong) UIColor *inputCellTextFieldBackgroundColor;   // default is (0.93, 0.93, 0.93, 1.0)
-@property (nonatomic, strong) UIColor *inputCellTextFieldBorderColor;       // default is (0.85, 0.85, 0.85, 1.0)
+/**
+ *  Default is white
+ */
+@property (nonatomic, strong) UIColor *tableViewBackGroundColor;
 
-@property (nonatomic, strong) UIColor *infoCellBackgroundColor;             // default is white
-@property (nonatomic, strong) UIColor *infoCellLabelTextColor;              // default is (0.25, 0.25, 0.25, 1.0)
-@property (nonatomic, strong) UIColor *infoCellLabelBackgroundColor;        // default is clear
+/**
+ *  Default is white
+ */
+@property (nonatomic, strong) UIColor *inputCellBackgroundColor;
+/**
+ *  Default is black
+ */
+@property (nonatomic, strong) UIColor *inputCellTextFieldTextColor;
+/**
+ *  Default is (0.93, 0.93, 0.93, 1.0)
+ */
+@property (nonatomic, strong) UIColor *inputCellTextFieldBackgroundColor;
+/**
+ *  Default is (0.85, 0.85, 0.85, 1.0)
+ */
+@property (nonatomic, strong) UIColor *inputCellTextFieldBorderColor;
 
-@property (nonatomic, strong) UIColor *buttonCellBackgroundColor;           // default is white
+/**
+ *  Default is white
+ */
+@property (nonatomic, strong) UIColor *infoCellBackgroundColor;
+/**
+ *  Default is (0.25, 0.25, 0.25, 1.0)
+ */
+@property (nonatomic, strong) UIColor *infoCellLabelTextColor;
+/**
+ *  Default is clear
+ */
+@property (nonatomic, strong) UIColor *infoCellLabelBackgroundColor;
 
-@property (nonatomic, strong) UIColor *headerFooterLabelTextColor;          // default is dark-gray
+/**
+ *  Default is white
+ */
+@property (nonatomic, strong) UIColor *buttonCellBackgroundColor;
+
+/**
+ *  Default is dark-gray
+ */
+@property (nonatomic, strong) UIColor *headerFooterLabelTextColor;
 
 
-// -- Fonts --
-@property (nonatomic, strong) UIFont *inputCellTextFieldFont;               // default is system-14
-@property (nonatomic, strong) UIFont *inputCellTextFieldFloatingLabelFont;  // default is system-8
+#pragma mark - Fonts
+/**
+ *  Default is system-14
+ */
+@property (nonatomic, strong) UIFont *inputCellTextFieldFont;
+/**
+ *  Default is system-8
+ */
+@property (nonatomic, strong) UIFont *inputCellTextFieldFloatingLabelFont;
 
-@property (nonatomic, strong) UIFont *infoCellLabelFont;                    // default is system-10
+/**
+ *  Default is system-10
+ */
+@property (nonatomic, strong) UIFont *infoCellLabelFont;
 
-@property (nonatomic, strong) UIFont *headerFooterLabelFont;                // default is system-12
+/**
+ *  Default is sytem-12
+ */
+@property (nonatomic, strong) UIFont *headerFooterLabelFont;
 
 
-// -- Sizes --
-@property (nonatomic, assign) CGFloat infoCellHeight;                       // default is 16
-@property (nonatomic, assign) CGFloat spaceBetweenCells;                    // default is 8
+#pragma mark - Sizes
+/**
+ *  Default is 16
+ */
+@property (nonatomic, assign) CGFloat infoCellHeight;
+/**
+ *  Default is 8
+ */
+@property (nonatomic, assign) CGFloat spaceBetweenCells;
 
-@property (nonatomic, assign) CGFloat textFieldSidePadding;                 // default is 5
+/**
+ *  Default is 5
+ */
+@property (nonatomic, assign) CGFloat textFieldSidePadding;
 
 @end

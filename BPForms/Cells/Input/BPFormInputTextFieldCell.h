@@ -23,9 +23,14 @@
 
 #import "BPFormInputCell.h"
 
+/**
+ *  Textfield input cell
+ */
 @interface BPFormInputTextFieldCell : BPFormInputCell
 
-// UI components
+/**
+ *  The textfield
+ */
 @property (nonatomic, strong) UITextField *textField;
 
 @end
