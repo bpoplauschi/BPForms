@@ -64,7 +64,7 @@
 }
 
 - (CGFloat)cellHeight {
-    if (self.customCellHeight) {
+    if (self.customCellHeight > 0.0f) {
         return self.customCellHeight;
     }
     return self.bounds.size.height;
