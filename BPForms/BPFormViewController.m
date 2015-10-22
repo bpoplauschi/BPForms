@@ -28,7 +28,7 @@
 #import "BPFormInputCell.h"
 #import "BPFormTextField.h"
 #import "BPFormInfoCell.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 #import "UITextField+BPForms.h"
 #import "UITextView+BPForms.h"
 #import "BPFormInputTextFieldCell.h"

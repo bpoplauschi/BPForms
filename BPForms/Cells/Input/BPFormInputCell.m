@@ -25,7 +25,7 @@
 #import "BPFormInputCell.h"
 #import "BPFormInfoCell.h"
 #import "BPAppearance.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pattern, NSString *message) {
     return ^BOOL(BPFormInputCell *inCell, NSString *inText) {
