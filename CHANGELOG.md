@@ -1,3 +1,9 @@
+## [2.0.4 Patch release for 2.0.0 (improved) on Oct 22nd, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.0.4)
+- Fixed the clear button position on float labels [8b1f68a](https://github.com/bpoplauschi/BPForms/commit/8b1f68a)
+- Padding fixes, including the ones for the clear button [f954c9e](https://github.com/bpoplauschi/BPForms/commit/f954c9e)
+- Added CHANGELOG
+- Updated documentation
+
 ## [2.0.3 Patch release for 2.0.0 (improved) on Feb 17th, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.0.3)
 - Created a `BPForms.h` generic header including all core headers - [9348df3](https://github.com/bpoplauschi/BPForms/commit/9348df3)
 - Fixed a button size issue - [6460300](https://github.com/bpoplauschi/BPForms/commit/6460300) [0f2c599](https://github.com/bpoplauschi/BPForms/commit/0f2c599)
