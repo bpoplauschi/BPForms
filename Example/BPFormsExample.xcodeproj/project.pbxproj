@@ -625,10 +625,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA192D0118C752BD0025FFB4 /* BPFormsExample */,
-				DA192D2518C752BE0025FFB4 /* BPFormsExampleTests */,
 				439AF53F1BDCFCE900116CAB /* BPForms */,
 				439AF5761BDD00BB00116CAB /* BPFormsFramework */,
+				DA192D0118C752BD0025FFB4 /* BPFormsExample */,
+				DA192D2518C752BE0025FFB4 /* BPFormsExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1094,6 +1094,7 @@
 				439AF5471BDCFCEA00116CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		439AF57C1BDD00BC00116CAB /* Build configuration list for PBXNativeTarget "BPFormsFramework" */ = {
 			isa = XCConfigurationList;
@@ -1102,6 +1103,7 @@
 				439AF57E1BDD00BC00116CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA192CFD18C752BD0025FFB4 /* Build configuration list for PBXProject "BPFormsExample" */ = {
 			isa = XCConfigurationList;

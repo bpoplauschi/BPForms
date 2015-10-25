@@ -17,7 +17,7 @@
                BlueprintIdentifier = "439AF53F1BDCFCE900116CAB"
                BuildableName = "libBPForms.a"
                BlueprintName = "BPForms"
-               ReferencedContainer = "container:BPFormsExample.xcodeproj">
+               ReferencedContainer = "container:Example/BPFormsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "439AF53F1BDCFCE900116CAB"
             BuildableName = "libBPForms.a"
             BlueprintName = "BPForms"
-            ReferencedContainer = "container:BPFormsExample.xcodeproj">
+            ReferencedContainer = "container:Example/BPFormsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,7 +66,7 @@
             BlueprintIdentifier = "439AF53F1BDCFCE900116CAB"
             BuildableName = "libBPForms.a"
             BlueprintName = "BPForms"
-            ReferencedContainer = "container:BPFormsExample.xcodeproj">
+            ReferencedContainer = "container:Example/BPFormsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
