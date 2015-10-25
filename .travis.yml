@@ -13,9 +13,10 @@ before_install:
 script:
     - pod lib lint
     - cd Example
-    - pod update
+    - pod install
+    - cd ..
     - set -o pipefail
-    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator clean build | xcpretty -c
-    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPForms' -sdk iphonesimulator clean build | xcpretty -c
-    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsFramework' -sdk iphonesimulator clean build | xcpretty -c
-    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator test | xcpretty -c
+    - xcodebuild -workspace BPForms.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator clean build | xcpretty -c
+    - xcodebuild -workspace BPForms.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator test | xcpretty -c
+    - xcodebuild -workspace BPForms.xcworkspace -scheme 'BPForms' -sdk iphonesimulator clean build | xcpretty -c
+    - xcodebuild -workspace BPForms.xcworkspace -scheme 'BPFormsFramework' -sdk iphonesimulator clean build | xcpretty -c
