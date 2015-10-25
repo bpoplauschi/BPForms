@@ -68,6 +68,7 @@
     self.sectionFooterTitles = [NSMutableDictionary dictionary];
     
     self.customSectionHeaderInsets = UIEdgeInsetsZero;
+    self.customSectionFooterInsets = UIEdgeInsetsZero;
     self.customSectionHeaderHeight = 0.0;
     self.customSectionFooterHeight = 0.0;
 }
