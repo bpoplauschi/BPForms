@@ -1,3 +1,7 @@
+## [2.1.0 Framework and static lib on Oct 25th, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.1.0)
+- Added a Framework and a static library target
+- Custom insets for headers and footers [#25](https://github.com/bpoplauschi/BPForms/pull/25)
+
 ## [2.0.4 Patch release for 2.0.0 (improved) on Oct 22nd, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.0.4)
 - Fixed the clear button position on float labels [8b1f68a](https://github.com/bpoplauschi/BPForms/commit/8b1f68a)
 - Padding fixes, including the ones for the clear button [f954c9e](https://github.com/bpoplauschi/BPForms/commit/f954c9e)
@@ -19,7 +23,7 @@
 ## [2.0.1 Patch release for 2.0.0 on May 28th, 2014](https://github.com/bpoplauschi/BPForms/releases/tag/2.0.1)
 Fixed a bunch of issues:
 - Fixed: jumping from one cell to the next repeatedly changes the button cells dimensions [#10](https://github.com/bpoplauschi/BPForms/issues/10) [#14](https://github.com/bpoplauschi/BPForms/issues/14)
-- Fixed: Resizing TableView Height when Keyboard Appears Ruins Keyboard Transparency in iOS 7 [#12](https://github.com/bpoplauschi/BPForms/issues/12). Thanks to [@fabb](https://github.com/fabb) for the original implementation [#13](https://github.com/bpoplauschi/BPForms/pull/13) 
+- Fixed: Resizing TableView Height when Keyboard Appears Ruins Keyboard Transparency in iOS 7 [#12](https://github.com/bpoplauschi/BPForms/issues/12). Thanks to [@fabb](https://github.com/fabb) for the original implementation [#13](https://github.com/bpoplauschi/BPForms/pull/13)
 - Fixed: info cell should not be selectable [#15](https://github.com/bpoplauschi/BPForms/issues/15)
 - Changed keyboard notification from `didShow` to `willShow`
 
