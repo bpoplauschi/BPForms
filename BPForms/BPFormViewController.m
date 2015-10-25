@@ -67,6 +67,7 @@
     self.sectionHeaderTitles = [NSMutableDictionary dictionary];
     self.sectionFooterTitles = [NSMutableDictionary dictionary];
     
+    self.customSectionHeaderInsets = UIEdgeInsetsZero;
     self.customSectionHeaderHeight = 0.0;
     self.customSectionFooterHeight = 0.0;
 }
@@ -304,12 +305,21 @@
     NSString *headerTitle = self.sectionHeaderTitles[@(section)];
     if (headerTitle) {
         CGFloat headerHeight = self.customSectionHeaderHeight ?: [self.tableView sectionHeaderHeight];
-        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, headerHeight)];
+        
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), headerHeight)];
+        CGFloat labelWidth = UIEdgeInsetsEqualToEdgeInsets(self.customSectionHeaderInsets, UIEdgeInsetsZero) ? CGRectGetWidth(self.tableView.frame) :
+        CGRectGetWidth(self.tableView.frame) - (self.customSectionHeaderInsets.left + self.customSectionHeaderInsets.right);
+        
+        CGFloat labelHeight = headerHeight - (self.customSectionHeaderInsets.top + self.customSectionHeaderInsets.bottom);
+        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.customSectionHeaderInsets.left, self.customSectionHeaderInsets.top, labelWidth, labelHeight)];
         infoLabel.text = headerTitle;
         infoLabel.textColor = [BPAppearance sharedInstance].headerFooterLabelTextColor;
         infoLabel.font = [BPAppearance sharedInstance].headerFooterLabelFont;
         infoLabel.textAlignment = NSTextAlignmentCenter;
-        return infoLabel;
+        infoLabel.numberOfLines = 0;
+        
+        [headerView addSubview:infoLabel];
+        return headerView;
     }
     return [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -325,12 +335,21 @@
     NSString *footerTitle = self.sectionFooterTitles[@(section)];
     if (footerTitle) {
         CGFloat footerHeight = self.customSectionFooterHeight ?: [self.tableView sectionFooterHeight];
-        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, footerHeight)];
+        
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), footerHeight)];
+        CGFloat labelWidth = UIEdgeInsetsEqualToEdgeInsets(self.customSectionFooterInsets, UIEdgeInsetsZero) ? CGRectGetWidth(self.tableView.frame) :
+        CGRectGetWidth(self.tableView.frame) - (self.customSectionFooterInsets.left + self.customSectionFooterInsets.right);
+        
+        CGFloat labelHeight = footerHeight - (self.customSectionFooterInsets.top + self.customSectionFooterInsets.bottom);
+        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.customSectionFooterInsets.left, self.customSectionFooterInsets.top, labelWidth, labelHeight)];
         infoLabel.text = footerTitle;
         infoLabel.textColor = [BPAppearance sharedInstance].headerFooterLabelTextColor;
         infoLabel.font = [BPAppearance sharedInstance].headerFooterLabelFont;
         infoLabel.textAlignment = NSTextAlignmentCenter;
-        return infoLabel;
+        infoLabel.numberOfLines = 0;
+        
+        [footerView addSubview:infoLabel];
+        return footerView;
     }
     return [[UIView alloc] initWithFrame:CGRectZero];
 }
