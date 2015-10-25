@@ -24,6 +24,9 @@
 @import Foundation;
 @import UIKit;
 
+/**
+ *  The protocol describes the common behavior of any form cell
+ */
 @protocol BPFormCellProtocol <NSObject>
 
 @required

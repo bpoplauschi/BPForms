@@ -61,10 +61,24 @@ BPFormInputCellShouldEditBlock BPValidateBlockWithPatternAndMessage(NSString *pa
  */
 @interface BPFormInputCell : BPFormCell
 
-// Blocks matching the UITextFieldDelegate methods
+/**
+ *  Block matching UITextField delegate method
+ */
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didBeginEditingBlock;
+
+/**
+ *  Block matching UITextField delegate method
+ */
 @property (nonatomic, copy) BPFormInputCellEditingBlock    didEndEditingBlock;
+
+/**
+ *  Block matching UITextField delegate method
+ */
 @property (nonatomic, copy) BPFormInputCellShouldEditBlock shouldChangeTextBlock;
+
+/**
+ *  Block matching UITextField delegate method
+ */
 @property (nonatomic, copy) BPFormInputCellShouldEditBlock shouldReturnBlock;
 
 /**

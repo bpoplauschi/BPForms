@@ -24,6 +24,9 @@
 @import Foundation;
 @import UIKit;
 
+/**
+ *  Subclass UITextView to adjust the layout (i.e. start text with a little offset)
+ */
 @interface BPFormTextView : UITextView
 
 @end
