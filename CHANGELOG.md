@@ -1,3 +1,6 @@
+## [2.1.1 Patch for 2.1.0 on Oct 25th, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.1.1)
+- Just moved the Xcode workspace around
+
 ## [2.1.0 Framework and static lib on Oct 25th, 2015](https://github.com/bpoplauschi/BPForms/releases/tag/2.1.0)
 - Added a Framework and a static library target
 - Custom insets for headers and footers [#25](https://github.com/bpoplauschi/BPForms/pull/25)
