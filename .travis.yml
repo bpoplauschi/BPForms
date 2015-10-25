@@ -15,3 +15,6 @@ script:
     - cd Example
     - pod update
     - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator clean build | xcpretty -c && exit ${PIPESTATUS[0]}
+    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPForms' -sdk iphonesimulator clean build | xcpretty -c && exit ${PIPESTATUS[0]}
+    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsFramework' -sdk iphonesimulator clean build | xcpretty -c && exit ${PIPESTATUS[0]}
+    - xcodebuild -workspace BPFormsExample.xcworkspace -scheme 'BPFormsExample' -sdk iphonesimulator test | xcpretty -c && exit ${PIPESTATUS[0]}

@@ -21,6 +21,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+@import Foundation;
+@import UIKit;
 
 /**
  *  Subclass UITextField to adjust the layout (i.e. start text with a little offset)

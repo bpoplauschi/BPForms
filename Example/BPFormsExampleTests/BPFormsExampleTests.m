@@ -22,7 +22,8 @@
 //  SOFTWARE.
 
 
-#import <XCTest/XCTest.h>
+@import XCTest;
+#import "BPForms.h"
 
 @interface BPFormsExampleTests : XCTestCase
 
@@ -44,7 +45,11 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    if (!NSClassFromString(@"BPFormViewController")) {
+        XCTFail(@"The BPFormViewController class should be available");
+    }
+    
+    XCTAssertEqual([BPAppearance sharedInstance], [BPAppearance sharedInstance]);
 }
 
 @end
